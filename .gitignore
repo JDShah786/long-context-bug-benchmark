@@ -1,0 +1,5 @@
+data/raw_repos/
+data/snippets/
+data/bugged/
+__pycache__/
+*.pyc
