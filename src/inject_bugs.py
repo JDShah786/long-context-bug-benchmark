@@ -31,17 +31,54 @@ def get_bug_position_buckets(total_tokens: int) -> List[Tuple[str, int, int]]:
     ]
 
 
-def inject_off_by_one(tree: ast.AST, lines: list[str]) -> Tuple[bool, str, str]:
+def inject_off_by_one(tree: ast.AST, lines: list[str]) -> Tuple[bool, str, str, int]:
     """Find a for-loop range() and make it off-by-one."""
-    # Placeholder: find range() in for-loop and adjust end
-    # Return: (success, original_code, bugged_code)
-    return False, "", ""
+    for node in ast.walk(tree):
+        if isinstance(node, ast.For):
+            # Check if iter is a Call to range()
+            if isinstance(node.iter, ast.Call):
+                func = node.iter.func
+                if isinstance(func, ast.Name) and func.id == "range":
+                    # Found a for loop with range()
+                    if not node.iter.args:
+                        continue  # range() with no args, skip
+                    
+                    # Get the line range of this for statement
+                    start_line = node.lineno - 1
+                    end_line = getattr(node, 'end_lineno', start_line + 1) - 1
+                    
+                    # Original code
+                    original = "\n".join(lines[start_line:end_line + 1])
+                    
+                    # Modify: subtract 1 from the first range argument
+                    first_arg = node.iter.args[0]
+                    if isinstance(first_arg, ast.Constant):
+                        # Simple constant like range(10)
+                        old_val = first_arg.value
+                        if isinstance(old_val, int) and old_val > 1:
+                            new_val = old_val - 1
+                            # Replace in source
+                            line = lines[start_line]
+                            lines[start_line] = line.replace(f"range({old_val}", f"range({new_val}", 1)
+                            bugged = "\n".join(lines[start_line:end_line + 1])
+                            return True, original, bugged, start_line + 1
+                    elif isinstance(first_arg, ast.Call):
+                        # range(len(x)) pattern
+                        if isinstance(first_arg.func, ast.Name) and first_arg.func.id == "len":
+                            line = lines[start_line]
+                            # Add -1 to len call
+                            if "range(len(" in line:
+                                lines[start_line] = line.replace("range(len(", "range(len(", 1).replace("))", ") - 1)", 1)
+                                bugged = "\n".join(lines[start_line:end_line + 1])
+                                return True, original, bugged, start_line + 1
+    
+    return False, "", "", 0
 
 
-def inject_wrong_comparison(tree: ast.AST, lines: list[str]) -> Tuple[bool, str, str]:
+def inject_wrong_comparison(tree: ast.AST, lines: list[str]) -> Tuple[bool, str, str, int]:
     """Swap <= < or == !=."""
     # Placeholder
-    return False, "", ""
+    return False, "", "", 0
 
 
 BUG_TEMPLATES = [
@@ -59,13 +96,15 @@ def inject_bug_into_snippet(snippet_path: Path, target_id: str) -> dict:
     if len(lines) < MIN_LINES_FOR_BUG:
         return None
     
-    tree = ast.parse(text)
+    try:
+        tree = ast.parse(text)
+    except SyntaxError:
+        return None  # skip unparseable files
     
     # Try each bug template until one succeeds
     for bug_fn in random.sample(BUG_TEMPLATES, len(BUG_TEMPLATES)):
-        result = bug_fn(tree, lines)
-        if result[0]:  # success
-            success, original, bugged = result
+        success, original, bugged, bug_line = bug_fn(tree, lines)
+        if success:
             break
     else:
         return None  # no applicable bugs
@@ -74,12 +113,13 @@ def inject_bug_into_snippet(snippet_path: Path, target_id: str) -> dict:
     bugged_id = f"{target_id}_bug"
     bugged_path = BUGGED_DIR / f"{bugged_id}.py"
     BUGGED_DIR.mkdir(parents=True, exist_ok=True)
-    bugged_path.write_text("\n".join(lines), encoding="utf-8")  
-
+    bugged_path.write_text("\n".join(lines), encoding="utf-8")
+    
     return {
         "target_id": target_id,
         "bugged_id": bugged_id,
         "bug_type": bug_fn.__name__,
+        "bug_line": bug_line,
         "original_segment": original,
         "bugged_segment": bugged,
         "line_count": len(lines),
@@ -92,7 +132,7 @@ if __name__ == "__main__":
     METADATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     
     with METADATA_PATH.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["target_id", "bugged_id", "bug_type", "original_segment", "bugged_segment", "line_count"])
+        writer = csv.DictWriter(f, fieldnames=["target_id", "bugged_id", "bug_type", "bug_line", "original_segment", "bugged_segment", "line_count"])
         writer.writeheader()
         
         injected = 0
@@ -102,5 +142,5 @@ if __name__ == "__main__":
             if metadata:
                 writer.writerow(metadata)
                 injected += 1
-        
-        print(f"Injected {injected} bugs. Metadata saved to {METADATA_PATH}")
+    
+    print(f"Injected {injected} bugs. Metadata saved to {METADATA_PATH}")
