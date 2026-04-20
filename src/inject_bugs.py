@@ -76,8 +76,51 @@ def inject_off_by_one(tree: ast.AST, lines: list[str]) -> Tuple[bool, str, str, 
 
 
 def inject_wrong_comparison(tree: ast.AST, lines: list[str]) -> Tuple[bool, str, str, int]:
-    """Swap <= < or == !=."""
-    # Placeholder
+    """Swap <= < or == != or >= >."""
+    # Map of comparison swaps
+    swaps = {
+        "<=": "<",
+        "<": "<=",
+        ">=": ">",
+        ">": ">=",
+        "==": "!=",
+        "!=": "==",
+    }
+    
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Compare):
+            # Get the line of this comparison
+            start_line = node.lineno - 1
+            end_line = getattr(node, 'end_lineno', start_line + 1) - 1
+            
+            # Original code
+            original = "\n".join(lines[start_line:end_line + 1])
+            
+            # Check operator types
+            for op in node.ops:
+                op_type = type(op).__name__
+                # Map AST node types to string operators
+                op_map = {
+                    "LtE": "<=",
+                    "Lt": "<",
+                    "GtE": ">=",
+                    "Gt": ">",
+                    "Eq": "==",
+                    "NotEq": "!=",
+                }
+                
+                if op_type in op_map:
+                    old_op = op_map[op_type]
+                    new_op = swaps.get(old_op)
+                    if new_op:
+                        # Try to replace in source (first occurrence on this line)
+                        line = lines[start_line]
+                        if old_op in line:
+                            # Only replace first occurrence to be safe
+                            lines[start_line] = line.replace(old_op, new_op, 1)
+                            bugged = "\n".join(lines[start_line:end_line + 1])
+                            return True, original, bugged, start_line + 1
+    
     return False, "", "", 0
 
 
