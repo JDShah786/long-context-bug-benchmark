@@ -76,21 +76,6 @@ def _comparison_sites(tree: ast.AST, lines: list[str]) -> list[Site]:
 
 
 def _off_by_one_sites(tree: ast.AST) -> list[Site]:
-    """YOUR TURN. Return one Site per `for ... in range(<one arg>):` loop.
-
-    Steps:
-      1. Walk the tree (like _comparison_sites does) and keep nodes that are ast.For.
-      2. Keep only loops where node.iter is an ast.Call, its .func is an ast.Name
-         with id "range", it has exactly one arg, and no keywords.
-      3. Let arg = node.iter.args[0]. Skip it if it spans lines (arg.lineno != arg.end_lineno).
-      4. If arg is an int Constant (not a bool) and its value > 1:
-             replace the arg's bytes with str(value - 1)
-             -> Site("off_by_one", arg.lineno, arg.col_offset, arg.end_col_offset, str(arg.value - 1))
-      5. Else if arg is a Name, Call, Attribute or Subscript:
-             insert " - 1" right after it (start == end == arg.end_col_offset)
-      6. Anything else (like `a if c else b`): skip it.
-    """
-
     sites = []
     for node in ast.walk(tree):
         if isinstance(node, ast.For):
