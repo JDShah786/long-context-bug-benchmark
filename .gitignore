@@ -3,3 +3,4 @@ data/snippets/
 data/bugged/
 __pycache__/
 *.pyc
+.venv/
