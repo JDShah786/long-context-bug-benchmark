@@ -22,7 +22,7 @@ This is a controlled test of the "Lost in the Middle" effect ([Liu et al., 2023]
 | Step | State |
 |---|---|
 | 1. Bug injector (`src/bugs.py`) | Done, 28 tests |
-| 2. Needle + haystack builder (`src/haystack.py`) | Builder done, 24 tests; dataset script next |
+| 2. Needle + haystack builder (`src/haystack.py`, `src/dataset.py`) | Done, 44 tests; 450 contexts built (`data/manifest.csv`) |
 | 3. Prompt + response parser | Not started |
 | 4. Scorer | Not started |
 | 5. Model clients | Not started |

@@ -1,0 +1,451 @@
+id,needle_id,kind,size,depth,actual_depth,bug_line,original_line,bugged_line,tokens
+n00_4000_0.1,n00,off_by_one,4000,0.1,0.0912,51,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,3936
+n00_4000_0.5,n00,off_by_one,4000,0.5,0.5147,272,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,3936
+n00_4000_0.9,n00,off_by_one,4000,0.9,0.9024,479,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,3936
+n00_16000_0.1,n00,off_by_one,16000,0.1,0.1007,210,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,15752
+n00_16000_0.5,n00,off_by_one,16000,0.5,0.5016,1057,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,15752
+n00_16000_0.9,n00,off_by_one,16000,0.9,0.9064,1907,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,15752
+n00_32000_0.1,n00,off_by_one,32000,0.1,0.0973,398,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,31490
+n00_32000_0.5,n00,off_by_one,32000,0.5,0.5006,2120,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,31490
+n00_32000_0.9,n00,off_by_one,32000,0.9,0.8985,3872,    for i in range(len(shortopts)):,    for i in range(len(shortopts) - 1):,31490
+n01_4000_0.1,n01,off_by_one,4000,0.1,0.119,62,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,3932
+n01_4000_0.5,n01,off_by_one,4000,0.5,0.4875,260,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,3932
+n01_4000_0.9,n01,off_by_one,4000,0.9,0.8937,472,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,3932
+n01_16000_0.1,n01,off_by_one,16000,0.1,0.1026,217,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,15747
+n01_16000_0.5,n01,off_by_one,16000,0.5,0.5054,1077,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,15747
+n01_16000_0.9,n01,off_by_one,16000,0.9,0.9071,1912,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,15747
+n01_32000_0.1,n01,off_by_one,32000,0.1,0.0988,413,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,31511
+n01_32000_0.5,n01,off_by_one,32000,0.5,0.4987,2102,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,31511
+n01_32000_0.9,n01,off_by_one,32000,0.9,0.8959,3722,    for i in range(len(buffer)):,    for i in range(len(buffer) - 1):,31511
+n02_4000_0.1,n02,off_by_one,4000,0.1,0.0864,49,    for i in range(block_count):,    for i in range(block_count - 1):,3934
+n02_4000_0.5,n02,off_by_one,4000,0.5,0.5112,266,    for i in range(block_count):,    for i in range(block_count - 1):,3934
+n02_4000_0.9,n02,off_by_one,4000,0.9,0.8996,496,    for i in range(block_count):,    for i in range(block_count - 1):,3934
+n02_16000_0.1,n02,off_by_one,16000,0.1,0.1057,220,    for i in range(block_count):,    for i in range(block_count - 1):,15749
+n02_16000_0.5,n02,off_by_one,16000,0.5,0.5001,1082,    for i in range(block_count):,    for i in range(block_count - 1):,15749
+n02_16000_0.9,n02,off_by_one,16000,0.9,0.9081,1939,    for i in range(block_count):,    for i in range(block_count - 1):,15749
+n02_32000_0.1,n02,off_by_one,32000,0.1,0.1001,437,    for i in range(block_count):,    for i in range(block_count - 1):,31510
+n02_32000_0.5,n02,off_by_one,32000,0.5,0.5011,2163,    for i in range(block_count):,    for i in range(block_count - 1):,31510
+n02_32000_0.9,n02,off_by_one,32000,0.9,0.9013,3869,    for i in range(block_count):,    for i in range(block_count - 1):,31510
+n03_4000_0.1,n03,off_by_one,4000,0.1,0.0943,46,    for i in range(block_count):,    for i in range(block_count - 1):,3935
+n03_4000_0.5,n03,off_by_one,4000,0.5,0.4999,269,    for i in range(block_count):,    for i in range(block_count - 1):,3935
+n03_4000_0.9,n03,off_by_one,4000,0.9,0.9042,496,    for i in range(block_count):,    for i in range(block_count - 1):,3935
+n03_16000_0.1,n03,off_by_one,16000,0.1,0.0975,204,    for i in range(block_count):,    for i in range(block_count - 1):,15758
+n03_16000_0.5,n03,off_by_one,16000,0.5,0.5008,1066,    for i in range(block_count):,    for i in range(block_count - 1):,15758
+n03_16000_0.9,n03,off_by_one,16000,0.9,0.8972,1906,    for i in range(block_count):,    for i in range(block_count - 1):,15758
+n03_32000_0.1,n03,off_by_one,32000,0.1,0.1012,433,    for i in range(block_count):,    for i in range(block_count - 1):,31527
+n03_32000_0.5,n03,off_by_one,32000,0.5,0.499,2120,    for i in range(block_count):,    for i in range(block_count - 1):,31527
+n03_32000_0.9,n03,off_by_one,32000,0.9,0.9033,3860,    for i in range(block_count):,    for i in range(block_count - 1):,31527
+n04_4000_0.1,n04,off_by_one,4000,0.1,0.1181,53,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,3936
+n04_4000_0.5,n04,off_by_one,4000,0.5,0.4903,243,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,3936
+n04_4000_0.9,n04,off_by_one,4000,0.9,0.9192,452,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,3936
+n04_16000_0.1,n04,off_by_one,16000,0.1,0.0995,186,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,15749
+n04_16000_0.5,n04,off_by_one,16000,0.5,0.4979,1031,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,15749
+n04_16000_0.9,n04,off_by_one,16000,0.9,0.8946,1888,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,15749
+n04_32000_0.1,n04,off_by_one,32000,0.1,0.0986,392,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,31514
+n04_32000_0.5,n04,off_by_one,32000,0.5,0.5005,2114,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,31514
+n04_32000_0.9,n04,off_by_one,32000,0.9,0.9003,3847,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,31514
+n05_4000_0.1,n05,off_by_one,4000,0.1,0.1024,50,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,3937
+n05_4000_0.5,n05,off_by_one,4000,0.5,0.5019,263,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,3937
+n05_4000_0.9,n05,off_by_one,4000,0.9,0.9025,479,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,3937
+n05_16000_0.1,n05,off_by_one,16000,0.1,0.097,207,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,15760
+n05_16000_0.5,n05,off_by_one,16000,0.5,0.4982,1049,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,15760
+n05_16000_0.9,n05,off_by_one,16000,0.9,0.9018,1924,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,15760
+n05_32000_0.1,n05,off_by_one,32000,0.1,0.1001,426,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,31524
+n05_32000_0.5,n05,off_by_one,32000,0.5,0.5002,2127,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,31524
+n05_32000_0.9,n05,off_by_one,32000,0.9,0.8969,3772,    for pos in range(len(fragment)):,    for pos in range(len(fragment) - 1):,31524
+n06_4000_0.1,n06,off_by_one,4000,0.1,0.0994,46,    for i in range(block_count):,    for i in range(block_count - 1):,3932
+n06_4000_0.5,n06,off_by_one,4000,0.5,0.5074,262,    for i in range(block_count):,    for i in range(block_count - 1):,3932
+n06_4000_0.9,n06,off_by_one,4000,0.9,0.8988,477,    for i in range(block_count):,    for i in range(block_count - 1):,3932
+n06_16000_0.1,n06,off_by_one,16000,0.1,0.1026,204,    for i in range(block_count):,    for i in range(block_count - 1):,15744
+n06_16000_0.5,n06,off_by_one,16000,0.5,0.5029,1093,    for i in range(block_count):,    for i in range(block_count - 1):,15744
+n06_16000_0.9,n06,off_by_one,16000,0.9,0.9053,1922,    for i in range(block_count):,    for i in range(block_count - 1):,15744
+n06_32000_0.1,n06,off_by_one,32000,0.1,0.0984,421,    for i in range(block_count):,    for i in range(block_count - 1):,31511
+n06_32000_0.5,n06,off_by_one,32000,0.5,0.4999,2125,    for i in range(block_count):,    for i in range(block_count - 1):,31511
+n06_32000_0.9,n06,off_by_one,32000,0.9,0.8978,3777,    for i in range(block_count):,    for i in range(block_count - 1):,31511
+n07_4000_0.1,n07,off_by_one,4000,0.1,0.0944,34,    for i in range(32):,    for i in range(31):,3939
+n07_4000_0.5,n07,off_by_one,4000,0.5,0.4933,231,    for i in range(32):,    for i in range(31):,3939
+n07_4000_0.9,n07,off_by_one,4000,0.9,0.9056,436,    for i in range(32):,    for i in range(31):,3939
+n07_16000_0.1,n07,off_by_one,16000,0.1,0.0968,181,    for i in range(32):,    for i in range(31):,15762
+n07_16000_0.5,n07,off_by_one,16000,0.5,0.5038,1026,    for i in range(32):,    for i in range(31):,15762
+n07_16000_0.9,n07,off_by_one,16000,0.9,0.9024,1849,    for i in range(32):,    for i in range(31):,15762
+n07_32000_0.1,n07,off_by_one,32000,0.1,0.0966,378,    for i in range(32):,    for i in range(31):,31529
+n07_32000_0.5,n07,off_by_one,32000,0.5,0.4996,2047,    for i in range(32):,    for i in range(31):,31529
+n07_32000_0.9,n07,off_by_one,32000,0.9,0.9014,3737,    for i in range(32):,    for i in range(31):,31529
+n08_4000_0.1,n08,off_by_one,4000,0.1,0.0713,45,    for i in range(block_count):,    for i in range(block_count - 1):,3927
+n08_4000_0.5,n08,off_by_one,4000,0.5,0.4948,261,    for i in range(block_count):,    for i in range(block_count - 1):,3927
+n08_4000_0.9,n08,off_by_one,4000,0.9,0.8849,489,    for i in range(block_count):,    for i in range(block_count - 1):,3927
+n08_16000_0.1,n08,off_by_one,16000,0.1,0.0979,206,    for i in range(block_count):,    for i in range(block_count - 1):,15736
+n08_16000_0.5,n08,off_by_one,16000,0.5,0.5,1079,    for i in range(block_count):,    for i in range(block_count - 1):,15736
+n08_16000_0.9,n08,off_by_one,16000,0.9,0.907,1960,    for i in range(block_count):,    for i in range(block_count - 1):,15736
+n08_32000_0.1,n08,off_by_one,32000,0.1,0.0989,438,    for i in range(block_count):,    for i in range(block_count - 1):,31498
+n08_32000_0.5,n08,off_by_one,32000,0.5,0.5019,2172,    for i in range(block_count):,    for i in range(block_count - 1):,31498
+n08_32000_0.9,n08,off_by_one,32000,0.9,0.8995,3816,    for i in range(block_count):,    for i in range(block_count - 1):,31498
+n09_4000_0.1,n09,off_by_one,4000,0.1,0.1061,59,    for b in range(blocks):,    for b in range(blocks - 1):,3939
+n09_4000_0.5,n09,off_by_one,4000,0.5,0.4963,263,    for b in range(blocks):,    for b in range(blocks - 1):,3939
+n09_4000_0.9,n09,off_by_one,4000,0.9,0.9167,480,    for b in range(blocks):,    for b in range(blocks - 1):,3939
+n09_16000_0.1,n09,off_by_one,16000,0.1,0.0928,202,    for b in range(blocks):,    for b in range(blocks - 1):,15752
+n09_16000_0.5,n09,off_by_one,16000,0.5,0.4947,1047,    for b in range(blocks):,    for b in range(blocks - 1):,15752
+n09_16000_0.9,n09,off_by_one,16000,0.9,0.9011,1908,    for b in range(blocks):,    for b in range(blocks - 1):,15752
+n09_32000_0.1,n09,off_by_one,32000,0.1,0.1017,424,    for b in range(blocks):,    for b in range(blocks - 1):,31529
+n09_32000_0.5,n09,off_by_one,32000,0.5,0.5016,2105,    for b in range(blocks):,    for b in range(blocks - 1):,31529
+n09_32000_0.9,n09,off_by_one,32000,0.9,0.8997,3746,    for b in range(blocks):,    for b in range(blocks - 1):,31529
+n10_4000_0.1,n10,off_by_one,4000,0.1,0.0901,46,        for _ in range(3):,        for _ in range(2):,3940
+n10_4000_0.5,n10,off_by_one,4000,0.5,0.499,257,        for _ in range(3):,        for _ in range(2):,3940
+n10_4000_0.9,n10,off_by_one,4000,0.9,0.9188,483,        for _ in range(3):,        for _ in range(2):,3940
+n10_16000_0.1,n10,off_by_one,16000,0.1,0.0959,198,        for _ in range(3):,        for _ in range(2):,15760
+n10_16000_0.5,n10,off_by_one,16000,0.5,0.5001,1019,        for _ in range(3):,        for _ in range(2):,15760
+n10_16000_0.9,n10,off_by_one,16000,0.9,0.908,1915,        for _ in range(3):,        for _ in range(2):,15760
+n10_32000_0.1,n10,off_by_one,32000,0.1,0.1028,431,        for _ in range(3):,        for _ in range(2):,31528
+n10_32000_0.5,n10,off_by_one,32000,0.5,0.5006,2121,        for _ in range(3):,        for _ in range(2):,31528
+n10_32000_0.9,n10,off_by_one,32000,0.9,0.8991,3775,        for _ in range(3):,        for _ in range(2):,31528
+n11_4000_0.1,n11,off_by_one,4000,0.1,0.1052,51,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,3937
+n11_4000_0.5,n11,off_by_one,4000,0.5,0.4895,261,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,3937
+n11_4000_0.9,n11,off_by_one,4000,0.9,0.9078,475,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,3937
+n11_16000_0.1,n11,off_by_one,16000,0.1,0.0958,199,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,15756
+n11_16000_0.5,n11,off_by_one,16000,0.5,0.4918,1005,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,15756
+n11_16000_0.9,n11,off_by_one,16000,0.9,0.8971,1825,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,15756
+n11_32000_0.1,n11,off_by_one,32000,0.1,0.0965,408,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,31510
+n11_32000_0.5,n11,off_by_one,32000,0.5,0.5019,2058,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,31510
+n11_32000_0.9,n11,off_by_one,32000,0.9,0.8979,3764,    for i in range(len(sorted_list)):,    for i in range(len(sorted_list) - 1):,31510
+n12_4000_0.1,n12,off_by_one,4000,0.1,0.1118,44,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,3943
+n12_4000_0.5,n12,off_by_one,4000,0.5,0.4895,246,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,3943
+n12_4000_0.9,n12,off_by_one,4000,0.9,0.8909,453,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,3943
+n12_16000_0.1,n12,off_by_one,16000,0.1,0.1037,210,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,15751
+n12_16000_0.5,n12,off_by_one,16000,0.5,0.5012,1025,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,15751
+n12_16000_0.9,n12,off_by_one,16000,0.9,0.8998,1872,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,15751
+n12_32000_0.1,n12,off_by_one,32000,0.1,0.1,407,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,31508
+n12_32000_0.5,n12,off_by_one,32000,0.5,0.4998,2087,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,31508
+n12_32000_0.9,n12,off_by_one,32000,0.9,0.8995,3800,    for seq in range(TMP_MAX):,    for seq in range(TMP_MAX - 1):,31508
+n13_4000_0.1,n13,off_by_one,4000,0.1,0.1308,61,    for i in range(len(s)):,    for i in range(len(s) - 1):,3938
+n13_4000_0.5,n13,off_by_one,4000,0.5,0.5038,253,    for i in range(len(s)):,    for i in range(len(s) - 1):,3938
+n13_4000_0.9,n13,off_by_one,4000,0.9,0.9086,474,    for i in range(len(s)):,    for i in range(len(s) - 1):,3938
+n13_16000_0.1,n13,off_by_one,16000,0.1,0.105,211,    for i in range(len(s)):,    for i in range(len(s) - 1):,15740
+n13_16000_0.5,n13,off_by_one,16000,0.5,0.4954,1069,    for i in range(len(s)):,    for i in range(len(s) - 1):,15740
+n13_16000_0.9,n13,off_by_one,16000,0.9,0.9031,1869,    for i in range(len(s)):,    for i in range(len(s) - 1):,15740
+n13_32000_0.1,n13,off_by_one,32000,0.1,0.1001,424,    for i in range(len(s)):,    for i in range(len(s) - 1):,31504
+n13_32000_0.5,n13,off_by_one,32000,0.5,0.4989,2073,    for i in range(len(s)):,    for i in range(len(s) - 1):,31504
+n13_32000_0.9,n13,off_by_one,32000,0.9,0.8984,3737,    for i in range(len(s)):,    for i in range(len(s) - 1):,31504
+n14_4000_0.1,n14,off_by_one,4000,0.1,0.1046,49,    for _ in range(10):,    for _ in range(9):,3938
+n14_4000_0.5,n14,off_by_one,4000,0.5,0.5025,256,    for _ in range(10):,    for _ in range(9):,3938
+n14_4000_0.9,n14,off_by_one,4000,0.9,0.9017,444,    for _ in range(10):,    for _ in range(9):,3938
+n14_16000_0.1,n14,off_by_one,16000,0.1,0.099,193,    for _ in range(10):,    for _ in range(9):,15761
+n14_16000_0.5,n14,off_by_one,16000,0.5,0.5019,1001,    for _ in range(10):,    for _ in range(9):,15761
+n14_16000_0.9,n14,off_by_one,16000,0.9,0.8987,1846,    for _ in range(10):,    for _ in range(9):,15761
+n14_32000_0.1,n14,off_by_one,32000,0.1,0.1026,407,    for _ in range(10):,    for _ in range(9):,31512
+n14_32000_0.5,n14,off_by_one,32000,0.5,0.499,2048,    for _ in range(10):,    for _ in range(9):,31512
+n14_32000_0.9,n14,off_by_one,32000,0.9,0.8999,3741,    for _ in range(10):,    for _ in range(9):,31512
+n15_4000_0.1,n15,comparison_flip,4000,0.1,0.0811,38,    if num is None or num < 0:,    if num is None or num <= 0:,3933
+n15_4000_0.5,n15,comparison_flip,4000,0.5,0.5113,271,    if num is None or num < 0:,    if num is None or num <= 0:,3933
+n15_4000_0.9,n15,comparison_flip,4000,0.9,0.9158,494,    if num is None or num < 0:,    if num is None or num <= 0:,3933
+n15_16000_0.1,n15,comparison_flip,16000,0.1,0.0963,201,    if num is None or num < 0:,    if num is None or num <= 0:,15748
+n15_16000_0.5,n15,comparison_flip,16000,0.5,0.497,1013,    if num is None or num < 0:,    if num is None or num <= 0:,15748
+n15_16000_0.9,n15,comparison_flip,16000,0.9,0.8993,1912,    if num is None or num < 0:,    if num is None or num <= 0:,15748
+n15_32000_0.1,n15,comparison_flip,32000,0.1,0.1019,449,    if num is None or num < 0:,    if num is None or num <= 0:,31520
+n15_32000_0.5,n15,comparison_flip,32000,0.5,0.4999,2152,    if num is None or num < 0:,    if num is None or num <= 0:,31520
+n15_32000_0.9,n15,comparison_flip,32000,0.9,0.9019,3855,    if num is None or num < 0:,    if num is None or num <= 0:,31520
+n16_4000_0.1,n16,comparison_flip,4000,0.1,0.1179,55,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,3937
+n16_4000_0.5,n16,comparison_flip,4000,0.5,0.4981,234,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,3937
+n16_4000_0.9,n16,comparison_flip,4000,0.9,0.8946,442,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,3937
+n16_16000_0.1,n16,comparison_flip,16000,0.1,0.1005,184,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,15755
+n16_16000_0.5,n16,comparison_flip,16000,0.5,0.507,1071,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,15755
+n16_16000_0.9,n16,comparison_flip,16000,0.9,0.9022,1920,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,15755
+n16_32000_0.1,n16,comparison_flip,32000,0.1,0.097,379,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,31512
+n16_32000_0.5,n16,comparison_flip,32000,0.5,0.5002,2126,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,31512
+n16_32000_0.9,n16,comparison_flip,32000,0.9,0.8989,3805,        if len(headers) > _MAXHEADERS:,        if len(headers) >= _MAXHEADERS:,31512
+n17_4000_0.1,n17,comparison_flip,4000,0.1,0.0961,46,    while pos > 0:,    while pos >= 0:,3942
+n17_4000_0.5,n17,comparison_flip,4000,0.5,0.4858,257,    while pos > 0:,    while pos >= 0:,3942
+n17_4000_0.9,n17,comparison_flip,4000,0.9,0.894,466,    while pos > 0:,    while pos >= 0:,3942
+n17_16000_0.1,n17,comparison_flip,16000,0.1,0.0986,206,    while pos > 0:,    while pos >= 0:,15762
+n17_16000_0.5,n17,comparison_flip,16000,0.5,0.4976,1037,    while pos > 0:,    while pos >= 0:,15762
+n17_16000_0.9,n17,comparison_flip,16000,0.9,0.9,1862,    while pos > 0:,    while pos >= 0:,15762
+n17_32000_0.1,n17,comparison_flip,32000,0.1,0.0999,418,    while pos > 0:,    while pos >= 0:,31511
+n17_32000_0.5,n17,comparison_flip,32000,0.5,0.4991,2033,    while pos > 0:,    while pos >= 0:,31511
+n17_32000_0.9,n17,comparison_flip,32000,0.9,0.9015,3674,    while pos > 0:,    while pos >= 0:,31511
+n18_4000_0.1,n18,comparison_flip,4000,0.1,0.1377,69,    elif b < 0:,    elif b <= 0:,3937
+n18_4000_0.5,n18,comparison_flip,4000,0.5,0.4948,262,    elif b < 0:,    elif b <= 0:,3937
+n18_4000_0.9,n18,comparison_flip,4000,0.9,0.907,482,    elif b < 0:,    elif b <= 0:,3937
+n18_16000_0.1,n18,comparison_flip,16000,0.1,0.102,215,    elif b < 0:,    elif b <= 0:,15740
+n18_16000_0.5,n18,comparison_flip,16000,0.5,0.4991,1060,    elif b < 0:,    elif b <= 0:,15740
+n18_16000_0.9,n18,comparison_flip,16000,0.9,0.9027,1918,    elif b < 0:,    elif b <= 0:,15740
+n18_32000_0.1,n18,comparison_flip,32000,0.1,0.0968,412,    elif b < 0:,    elif b <= 0:,31493
+n18_32000_0.5,n18,comparison_flip,32000,0.5,0.5003,2123,    elif b < 0:,    elif b <= 0:,31493
+n18_32000_0.9,n18,comparison_flip,32000,0.9,0.9017,3818,    elif b < 0:,    elif b <= 0:,31493
+n19_4000_0.1,n19,comparison_flip,4000,0.1,0.1042,43,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",3933
+n19_4000_0.5,n19,comparison_flip,4000,0.5,0.5075,256,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",3933
+n19_4000_0.9,n19,comparison_flip,4000,0.9,0.8988,479,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",3933
+n19_16000_0.1,n19,comparison_flip,16000,0.1,0.1011,200,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",15763
+n19_16000_0.5,n19,comparison_flip,16000,0.5,0.4992,1039,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",15763
+n19_16000_0.9,n19,comparison_flip,16000,0.9,0.901,1883,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",15763
+n19_32000_0.1,n19,comparison_flip,32000,0.1,0.0999,426,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",31520
+n19_32000_0.5,n19,comparison_flip,32000,0.5,0.5013,2066,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",31520
+n19_32000_0.9,n19,comparison_flip,32000,0.9,0.9036,3774,"        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) > 0):","        (curly := message.find(b'}', 1, _MAX_DIGEST_LEN+2)) >= 0):",31520
+n20_4000_0.1,n20,comparison_flip,4000,0.1,0.0901,40,            if len(d) > 1:,            if len(d) >= 1:,3939
+n20_4000_0.5,n20,comparison_flip,4000,0.5,0.5204,252,            if len(d) > 1:,            if len(d) >= 1:,3939
+n20_4000_0.9,n20,comparison_flip,4000,0.9,0.9172,457,            if len(d) > 1:,            if len(d) >= 1:,3939
+n20_16000_0.1,n20,comparison_flip,16000,0.1,0.0948,184,            if len(d) > 1:,            if len(d) >= 1:,15747
+n20_16000_0.5,n20,comparison_flip,16000,0.5,0.4998,1048,            if len(d) > 1:,            if len(d) >= 1:,15747
+n20_16000_0.9,n20,comparison_flip,16000,0.9,0.9048,1913,            if len(d) > 1:,            if len(d) >= 1:,15747
+n20_32000_0.1,n20,comparison_flip,32000,0.1,0.0995,379,            if len(d) > 1:,            if len(d) >= 1:,31506
+n20_32000_0.5,n20,comparison_flip,32000,0.5,0.5007,2100,            if len(d) > 1:,            if len(d) >= 1:,31506
+n20_32000_0.9,n20,comparison_flip,32000,0.9,0.9008,3803,            if len(d) > 1:,            if len(d) >= 1:,31506
+n21_4000_0.1,n21,comparison_flip,4000,0.1,0.0977,50,    if level > 0:,    if level >= 0:,3932
+n21_4000_0.5,n21,comparison_flip,4000,0.5,0.5079,267,    if level > 0:,    if level >= 0:,3932
+n21_4000_0.9,n21,comparison_flip,4000,0.9,0.9189,493,    if level > 0:,    if level >= 0:,3932
+n21_16000_0.1,n21,comparison_flip,16000,0.1,0.101,209,    if level > 0:,    if level >= 0:,15746
+n21_16000_0.5,n21,comparison_flip,16000,0.5,0.5,1081,    if level > 0:,    if level >= 0:,15746
+n21_16000_0.9,n21,comparison_flip,16000,0.9,0.9045,1913,    if level > 0:,    if level >= 0:,15746
+n21_32000_0.1,n21,comparison_flip,32000,0.1,0.1008,445,    if level > 0:,    if level >= 0:,31516
+n21_32000_0.5,n21,comparison_flip,32000,0.5,0.5006,2117,    if level > 0:,    if level >= 0:,31516
+n21_32000_0.9,n21,comparison_flip,32000,0.9,0.9021,3788,    if level > 0:,    if level >= 0:,31516
+n22_4000_0.1,n22,comparison_flip,4000,0.1,0.0874,42,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",3936
+n22_4000_0.5,n22,comparison_flip,4000,0.5,0.5058,264,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",3936
+n22_4000_0.9,n22,comparison_flip,4000,0.9,0.9144,463,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",3936
+n22_16000_0.1,n22,comparison_flip,16000,0.1,0.0979,203,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",15745
+n22_16000_0.5,n22,comparison_flip,16000,0.5,0.4959,1053,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",15745
+n22_16000_0.9,n22,comparison_flip,16000,0.9,0.8984,1922,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",15745
+n22_32000_0.1,n22,comparison_flip,32000,0.1,0.1014,416,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",31508
+n22_32000_0.5,n22,comparison_flip,32000,0.5,0.499,2142,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",31508
+n22_32000_0.9,n22,comparison_flip,32000,0.9,0.9011,3796,"        raise TypeError(f""Too {'many' if actual_len > expected_len else 'few'} arguments""","        raise TypeError(f""Too {'many' if actual_len >= expected_len else 'few'} arguments""",31508
+n23_4000_0.1,n23,comparison_flip,4000,0.1,0.1059,55,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",3939
+n23_4000_0.5,n23,comparison_flip,4000,0.5,0.4775,263,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",3939
+n23_4000_0.9,n23,comparison_flip,4000,0.9,0.8835,490,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",3939
+n23_16000_0.1,n23,comparison_flip,16000,0.1,0.1023,233,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",15759
+n23_16000_0.5,n23,comparison_flip,16000,0.5,0.5019,1066,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",15759
+n23_16000_0.9,n23,comparison_flip,16000,0.9,0.9046,1866,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",15759
+n23_32000_0.1,n23,comparison_flip,32000,0.1,0.1004,437,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",31510
+n23_32000_0.5,n23,comparison_flip,32000,0.5,0.4964,2051,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",31510
+n23_32000_0.9,n23,comparison_flip,32000,0.9,0.9,3785,"        if is_HDN(h) and (i >= 0 or b == ""local""):","        if is_HDN(h) and (i > 0 or b == ""local""):",31510
+n24_4000_0.1,n24,comparison_flip,4000,0.1,0.0997,54,        if left <= int_ < right:,        if left < int_ < right:,3943
+n24_4000_0.5,n24,comparison_flip,4000,0.5,0.4986,275,        if left <= int_ < right:,        if left < int_ < right:,3943
+n24_4000_0.9,n24,comparison_flip,4000,0.9,0.9041,490,        if left <= int_ < right:,        if left < int_ < right:,3943
+n24_16000_0.1,n24,comparison_flip,16000,0.1,0.0996,222,        if left <= int_ < right:,        if left < int_ < right:,15765
+n24_16000_0.5,n24,comparison_flip,16000,0.5,0.4962,1104,        if left <= int_ < right:,        if left < int_ < right:,15765
+n24_16000_0.9,n24,comparison_flip,16000,0.9,0.9016,1979,        if left <= int_ < right:,        if left < int_ < right:,15765
+n24_32000_0.1,n24,comparison_flip,32000,0.1,0.1003,428,        if left <= int_ < right:,        if left < int_ < right:,31512
+n24_32000_0.5,n24,comparison_flip,32000,0.5,0.5005,2168,        if left <= int_ < right:,        if left < int_ < right:,31512
+n24_32000_0.9,n24,comparison_flip,32000,0.9,0.9,3878,        if left <= int_ < right:,        if left < int_ < right:,31512
+n25_4000_0.1,n25,comparison_flip,4000,0.1,0.0794,40,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,3941
+n25_4000_0.5,n25,comparison_flip,4000,0.5,0.494,248,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,3941
+n25_4000_0.9,n25,comparison_flip,4000,0.9,0.8815,455,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,3941
+n25_16000_0.1,n25,comparison_flip,16000,0.1,0.098,203,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,15749
+n25_16000_0.5,n25,comparison_flip,16000,0.5,0.5057,1074,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,15749
+n25_16000_0.9,n25,comparison_flip,16000,0.9,0.8997,1938,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,15749
+n25_32000_0.1,n25,comparison_flip,32000,0.1,0.1,419,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,31503
+n25_32000_0.5,n25,comparison_flip,32000,0.5,0.4989,2166,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,31503
+n25_32000_0.9,n25,comparison_flip,32000,0.9,0.9003,3915,        if char > 0x10FFFF:,        if char >= 0x10FFFF:,31503
+n26_4000_0.1,n26,comparison_flip,4000,0.1,0.1032,56,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),3933
+n26_4000_0.5,n26,comparison_flip,4000,0.5,0.4971,273,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),3933
+n26_4000_0.9,n26,comparison_flip,4000,0.9,0.8747,469,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),3933
+n26_16000_0.1,n26,comparison_flip,16000,0.1,0.0994,210,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),15746
+n26_16000_0.5,n26,comparison_flip,16000,0.5,0.4996,1040,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),15746
+n26_16000_0.9,n26,comparison_flip,16000,0.9,0.8958,1875,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),15746
+n26_32000_0.1,n26,comparison_flip,32000,0.1,0.0997,432,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),31509
+n26_32000_0.5,n26,comparison_flip,32000,0.5,0.5,2090,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),31509
+n26_32000_0.9,n26,comparison_flip,32000,0.9,0.8987,3752,    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p < 1/2 else 1.0 - sqrt(2.0 - 2.0*p),    invcdf = lambda p: sqrt(2.0*p) - 1.0 if p <= 1/2 else 1.0 - sqrt(2.0 - 2.0*p),31509
+n27_4000_0.1,n27,comparison_flip,4000,0.1,0.0917,45,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,3937
+n27_4000_0.5,n27,comparison_flip,4000,0.5,0.5042,282,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,3937
+n27_4000_0.9,n27,comparison_flip,4000,0.9,0.8948,488,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,3937
+n27_16000_0.1,n27,comparison_flip,16000,0.1,0.0984,220,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,15761
+n27_16000_0.5,n27,comparison_flip,16000,0.5,0.4941,1068,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,15761
+n27_16000_0.9,n27,comparison_flip,16000,0.9,0.8959,1903,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,15761
+n27_32000_0.1,n27,comparison_flip,32000,0.1,0.1031,446,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,31516
+n27_32000_0.5,n27,comparison_flip,32000,0.5,0.5014,2127,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,31516
+n27_32000_0.9,n27,comparison_flip,32000,0.9,0.8989,3806,    if firstweekday > THURSDAY:,    if firstweekday >= THURSDAY:,31516
+n28_4000_0.1,n28,comparison_flip,4000,0.1,0.0845,47,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,3939
+n28_4000_0.5,n28,comparison_flip,4000,0.5,0.5057,263,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,3939
+n28_4000_0.9,n28,comparison_flip,4000,0.9,0.8637,454,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,3939
+n28_16000_0.1,n28,comparison_flip,16000,0.1,0.0993,200,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,15765
+n28_16000_0.5,n28,comparison_flip,16000,0.5,0.4983,992,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,15765
+n28_16000_0.9,n28,comparison_flip,16000,0.9,0.9004,1833,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,15765
+n28_32000_0.1,n28,comparison_flip,32000,0.1,0.1013,422,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,31526
+n28_32000_0.5,n28,comparison_flip,32000,0.5,0.4978,2011,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,31526
+n28_32000_0.9,n28,comparison_flip,32000,0.9,0.8973,3683,            byte_ord < 128 and byte.decode() in allowed_chars,            byte_ord <= 128 and byte.decode() in allowed_chars,31526
+n29_4000_0.1,n29,comparison_flip,4000,0.1,0.1079,65,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,3938
+n29_4000_0.5,n29,comparison_flip,4000,0.5,0.5079,280,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,3938
+n29_4000_0.9,n29,comparison_flip,4000,0.9,0.9027,479,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,3938
+n29_16000_0.1,n29,comparison_flip,16000,0.1,0.1046,232,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,15753
+n29_16000_0.5,n29,comparison_flip,16000,0.5,0.4937,1024,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,15753
+n29_16000_0.9,n29,comparison_flip,16000,0.9,0.9003,1897,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,15753
+n29_32000_0.1,n29,comparison_flip,32000,0.1,0.0973,414,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,31515
+n29_32000_0.5,n29,comparison_flip,32000,0.5,0.4998,2108,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,31515
+n29_32000_0.9,n29,comparison_flip,32000,0.9,0.9009,3823,    elif len(lines) >= 2 and not lines[1].rstrip():,    elif len(lines) > 2 and not lines[1].rstrip():,31515
+n30_4000_0.1,n30,comparison_flip,4000,0.1,0.0974,45,        if installed.version >= version:,        if installed.version > version:,3943
+n30_4000_0.5,n30,comparison_flip,4000,0.5,0.5174,265,        if installed.version >= version:,        if installed.version > version:,3943
+n30_4000_0.9,n30,comparison_flip,4000,0.9,0.9067,464,        if installed.version >= version:,        if installed.version > version:,3943
+n30_16000_0.1,n30,comparison_flip,16000,0.1,0.0997,209,        if installed.version >= version:,        if installed.version > version:,15763
+n30_16000_0.5,n30,comparison_flip,16000,0.5,0.5043,1058,        if installed.version >= version:,        if installed.version > version:,15763
+n30_16000_0.9,n30,comparison_flip,16000,0.9,0.9011,1897,        if installed.version >= version:,        if installed.version > version:,15763
+n30_32000_0.1,n30,comparison_flip,32000,0.1,0.1013,398,        if installed.version >= version:,        if installed.version > version:,31530
+n30_32000_0.5,n30,comparison_flip,32000,0.5,0.5013,2130,        if installed.version >= version:,        if installed.version > version:,31530
+n30_32000_0.9,n30,comparison_flip,32000,0.9,0.9018,3812,        if installed.version >= version:,        if installed.version > version:,31530
+n31_4000_0.1,n31,comparison_flip,4000,0.1,0.0922,50,    if optimize > 0:,    if optimize >= 0:,3939
+n31_4000_0.5,n31,comparison_flip,4000,0.5,0.5093,250,    if optimize > 0:,    if optimize >= 0:,3939
+n31_4000_0.9,n31,comparison_flip,4000,0.9,0.9101,463,    if optimize > 0:,    if optimize >= 0:,3939
+n31_16000_0.1,n31,comparison_flip,16000,0.1,0.0964,194,    if optimize > 0:,    if optimize >= 0:,15763
+n31_16000_0.5,n31,comparison_flip,16000,0.5,0.5041,1042,    if optimize > 0:,    if optimize >= 0:,15763
+n31_16000_0.9,n31,comparison_flip,16000,0.9,0.9007,1832,    if optimize > 0:,    if optimize >= 0:,15763
+n31_32000_0.1,n31,comparison_flip,32000,0.1,0.1003,405,    if optimize > 0:,    if optimize >= 0:,31522
+n31_32000_0.5,n31,comparison_flip,32000,0.5,0.4998,2035,    if optimize > 0:,    if optimize >= 0:,31522
+n31_32000_0.9,n31,comparison_flip,32000,0.9,0.8998,3722,    if optimize > 0:,    if optimize >= 0:,31522
+n32_4000_0.1,n32,comparison_flip,4000,0.1,0.1023,51,            if n < 0x10000:,            if n <= 0x10000:,3938
+n32_4000_0.5,n32,comparison_flip,4000,0.5,0.5018,264,            if n < 0x10000:,            if n <= 0x10000:,3938
+n32_4000_0.9,n32,comparison_flip,4000,0.9,0.9053,478,            if n < 0x10000:,            if n <= 0x10000:,3938
+n32_16000_0.1,n32,comparison_flip,16000,0.1,0.1027,216,            if n < 0x10000:,            if n <= 0x10000:,15770
+n32_16000_0.5,n32,comparison_flip,16000,0.5,0.4996,1057,            if n < 0x10000:,            if n <= 0x10000:,15770
+n32_16000_0.9,n32,comparison_flip,16000,0.9,0.905,1918,            if n < 0x10000:,            if n <= 0x10000:,15770
+n32_32000_0.1,n32,comparison_flip,32000,0.1,0.1004,426,            if n < 0x10000:,            if n <= 0x10000:,31522
+n32_32000_0.5,n32,comparison_flip,32000,0.5,0.4996,2101,            if n < 0x10000:,            if n <= 0x10000:,31522
+n32_32000_0.9,n32,comparison_flip,32000,0.9,0.9015,3806,            if n < 0x10000:,            if n <= 0x10000:,31522
+n33_4000_0.1,n33,comparison_flip,4000,0.1,0.1157,62,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,3942
+n33_4000_0.5,n33,comparison_flip,4000,0.5,0.5101,263,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,3942
+n33_4000_0.9,n33,comparison_flip,4000,0.9,0.8975,484,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,3942
+n33_16000_0.1,n33,comparison_flip,16000,0.1,0.0987,204,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,15761
+n33_16000_0.5,n33,comparison_flip,16000,0.5,0.5055,1084,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,15761
+n33_16000_0.9,n33,comparison_flip,16000,0.9,0.897,1922,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,15761
+n33_32000_0.1,n33,comparison_flip,32000,0.1,0.0996,423,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,31529
+n33_32000_0.5,n33,comparison_flip,32000,0.5,0.4992,2141,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,31529
+n33_32000_0.9,n33,comparison_flip,32000,0.9,0.8973,3874,    if len(s) >= 2_000_000 and _decimal is not None:,    if len(s) > 2_000_000 and _decimal is not None:,31529
+n34_4000_0.1,n34,comparison_flip,4000,0.1,0.0963,44,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",3936
+n34_4000_0.5,n34,comparison_flip,4000,0.5,0.4972,273,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",3936
+n34_4000_0.9,n34,comparison_flip,4000,0.9,0.9057,465,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",3936
+n34_16000_0.1,n34,comparison_flip,16000,0.1,0.0997,218,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",15761
+n34_16000_0.5,n34,comparison_flip,16000,0.5,0.4991,1030,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",15761
+n34_16000_0.9,n34,comparison_flip,16000,0.9,0.9026,1870,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",15761
+n34_32000_0.1,n34,comparison_flip,32000,0.1,0.0966,409,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",31518
+n34_32000_0.5,n34,comparison_flip,32000,0.5,0.5025,2099,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",31518
+n34_32000_0.9,n34,comparison_flip,32000,0.9,0.9011,3899,"    if sys.version_info >= (3, 12):","    if sys.version_info > (3, 12):",31518
+n35_4000_0.1,n35,comparison_flip,4000,0.1,0.094,39,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,3938
+n35_4000_0.5,n35,comparison_flip,4000,0.5,0.4731,257,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,3938
+n35_4000_0.9,n35,comparison_flip,4000,0.9,0.8987,460,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,3938
+n35_16000_0.1,n35,comparison_flip,16000,0.1,0.0983,215,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,15768
+n35_16000_0.5,n35,comparison_flip,16000,0.5,0.497,1056,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,15768
+n35_16000_0.9,n35,comparison_flip,16000,0.9,0.9023,1894,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,15768
+n35_32000_0.1,n35,comparison_flip,32000,0.1,0.1003,415,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,31521
+n35_32000_0.5,n35,comparison_flip,32000,0.5,0.4992,2112,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,31521
+n35_32000_0.9,n35,comparison_flip,32000,0.9,0.9044,3827,    if len(possibilities) > 1:,    if len(possibilities) >= 1:,31521
+n36_4000_0.1,n36,comparison_flip,4000,0.1,0.1007,66,    if n < 2:,    if n <= 2:,3933
+n36_4000_0.5,n36,comparison_flip,4000,0.5,0.4917,273,    if n < 2:,    if n <= 2:,3933
+n36_4000_0.9,n36,comparison_flip,4000,0.9,0.8978,492,    if n < 2:,    if n <= 2:,3933
+n36_16000_0.1,n36,comparison_flip,16000,0.1,0.0994,226,    if n < 2:,    if n <= 2:,15759
+n36_16000_0.5,n36,comparison_flip,16000,0.5,0.4984,1061,    if n < 2:,    if n <= 2:,15759
+n36_16000_0.9,n36,comparison_flip,16000,0.9,0.8978,1921,    if n < 2:,    if n <= 2:,15759
+n36_32000_0.1,n36,comparison_flip,32000,0.1,0.098,438,    if n < 2:,    if n <= 2:,31516
+n36_32000_0.5,n36,comparison_flip,32000,0.5,0.4999,2168,    if n < 2:,    if n <= 2:,31516
+n36_32000_0.9,n36,comparison_flip,32000,0.9,0.9014,3870,    if n < 2:,    if n <= 2:,31516
+n37_4000_0.1,n37,comparison_flip,4000,0.1,0.0985,50,    if pad_needed <= 0:,    if pad_needed < 0:,3939
+n37_4000_0.5,n37,comparison_flip,4000,0.5,0.5121,250,    if pad_needed <= 0:,    if pad_needed < 0:,3939
+n37_4000_0.9,n37,comparison_flip,4000,0.9,0.9155,459,    if pad_needed <= 0:,    if pad_needed < 0:,3939
+n37_16000_0.1,n37,comparison_flip,16000,0.1,0.0971,184,    if pad_needed <= 0:,    if pad_needed < 0:,15752
+n37_16000_0.5,n37,comparison_flip,16000,0.5,0.4975,1032,    if pad_needed <= 0:,    if pad_needed < 0:,15752
+n37_16000_0.9,n37,comparison_flip,16000,0.9,0.9057,1870,    if pad_needed <= 0:,    if pad_needed < 0:,15752
+n37_32000_0.1,n37,comparison_flip,32000,0.1,0.1006,399,    if pad_needed <= 0:,    if pad_needed < 0:,31507
+n37_32000_0.5,n37,comparison_flip,32000,0.5,0.502,2070,    if pad_needed <= 0:,    if pad_needed < 0:,31507
+n37_32000_0.9,n37,comparison_flip,32000,0.9,0.8998,3713,    if pad_needed <= 0:,    if pad_needed < 0:,31507
+n38_4000_0.1,n38,comparison_flip,4000,0.1,0.0969,52,    return lower.version > upper.version,    return lower.version >= upper.version,3932
+n38_4000_0.5,n38,comparison_flip,4000,0.5,0.5069,266,    return lower.version > upper.version,    return lower.version >= upper.version,3932
+n38_4000_0.9,n38,comparison_flip,4000,0.9,0.9062,481,    return lower.version > upper.version,    return lower.version >= upper.version,3932
+n38_16000_0.1,n38,comparison_flip,16000,0.1,0.1007,212,    return lower.version > upper.version,    return lower.version >= upper.version,15751
+n38_16000_0.5,n38,comparison_flip,16000,0.5,0.5015,1042,    return lower.version > upper.version,    return lower.version >= upper.version,15751
+n38_16000_0.9,n38,comparison_flip,16000,0.9,0.9026,1879,    return lower.version > upper.version,    return lower.version >= upper.version,15751
+n38_32000_0.1,n38,comparison_flip,32000,0.1,0.0998,416,    return lower.version > upper.version,    return lower.version >= upper.version,31517
+n38_32000_0.5,n38,comparison_flip,32000,0.5,0.5003,2066,    return lower.version > upper.version,    return lower.version >= upper.version,31517
+n38_32000_0.9,n38,comparison_flip,32000,0.9,0.9012,3746,    return lower.version > upper.version,    return lower.version >= upper.version,31517
+n39_4000_0.1,n39,comparison_flip,4000,0.1,0.0972,56,        if len(path_names) > 1:,        if len(path_names) >= 1:,3939
+n39_4000_0.5,n39,comparison_flip,4000,0.5,0.5354,280,        if len(path_names) > 1:,        if len(path_names) >= 1:,3939
+n39_4000_0.9,n39,comparison_flip,4000,0.9,0.8969,472,        if len(path_names) > 1:,        if len(path_names) >= 1:,3939
+n39_16000_0.1,n39,comparison_flip,16000,0.1,0.1037,226,        if len(path_names) > 1:,        if len(path_names) >= 1:,15747
+n39_16000_0.5,n39,comparison_flip,16000,0.5,0.4981,1042,        if len(path_names) > 1:,        if len(path_names) >= 1:,15747
+n39_16000_0.9,n39,comparison_flip,16000,0.9,0.8985,1885,        if len(path_names) > 1:,        if len(path_names) >= 1:,15747
+n39_32000_0.1,n39,comparison_flip,32000,0.1,0.0994,414,        if len(path_names) > 1:,        if len(path_names) >= 1:,31501
+n39_32000_0.5,n39,comparison_flip,32000,0.5,0.5028,2146,        if len(path_names) > 1:,        if len(path_names) >= 1:,31501
+n39_32000_0.9,n39,comparison_flip,32000,0.9,0.9013,3772,        if len(path_names) > 1:,        if len(path_names) >= 1:,31501
+n40_4000_0.1,n40,comparison_flip,4000,0.1,0.105,44,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,3941
+n40_4000_0.5,n40,comparison_flip,4000,0.5,0.4709,230,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,3941
+n40_4000_0.9,n40,comparison_flip,4000,0.9,0.8863,465,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,3941
+n40_16000_0.1,n40,comparison_flip,16000,0.1,0.1018,202,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,15747
+n40_16000_0.5,n40,comparison_flip,16000,0.5,0.5007,1051,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,15747
+n40_16000_0.9,n40,comparison_flip,16000,0.9,0.9032,1923,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,15747
+n40_32000_0.1,n40,comparison_flip,32000,0.1,0.0989,417,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,31518
+n40_32000_0.5,n40,comparison_flip,32000,0.5,0.499,2110,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,31518
+n40_32000_0.9,n40,comparison_flip,32000,0.9,0.897,3771,    if version[0] > VERSION_COMPATIBLE[0]:,    if version[0] >= VERSION_COMPATIBLE[0]:,31518
+n41_4000_0.1,n41,comparison_flip,4000,0.1,0.0997,55,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,3940
+n41_4000_0.5,n41,comparison_flip,4000,0.5,0.485,251,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,3940
+n41_4000_0.9,n41,comparison_flip,4000,0.9,0.8964,465,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,3940
+n41_16000_0.1,n41,comparison_flip,16000,0.1,0.0988,206,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,15775
+n41_16000_0.5,n41,comparison_flip,16000,0.5,0.5017,1063,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,15775
+n41_16000_0.9,n41,comparison_flip,16000,0.9,0.9022,1877,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,15775
+n41_32000_0.1,n41,comparison_flip,32000,0.1,0.1033,427,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,31524
+n41_32000_0.5,n41,comparison_flip,32000,0.5,0.5001,2073,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,31524
+n41_32000_0.9,n41,comparison_flip,32000,0.9,0.9013,3790,    if not 1 <= code <= 0x7fffffff:,    if not 1 <= code < 0x7fffffff:,31524
+n42_4000_0.1,n42,comparison_flip,4000,0.1,0.0854,44,    if position < len(markup):,    if position <= len(markup):,3945
+n42_4000_0.5,n42,comparison_flip,4000,0.5,0.4996,254,    if position < len(markup):,    if position <= len(markup):,3945
+n42_4000_0.9,n42,comparison_flip,4000,0.9,0.9022,471,    if position < len(markup):,    if position <= len(markup):,3945
+n42_16000_0.1,n42,comparison_flip,16000,0.1,0.0991,200,    if position < len(markup):,    if position <= len(markup):,15748
+n42_16000_0.5,n42,comparison_flip,16000,0.5,0.4957,1036,    if position < len(markup):,    if position <= len(markup):,15748
+n42_16000_0.9,n42,comparison_flip,16000,0.9,0.8955,1904,    if position < len(markup):,    if position <= len(markup):,15748
+n42_32000_0.1,n42,comparison_flip,32000,0.1,0.1013,422,    if position < len(markup):,    if position <= len(markup):,31516
+n42_32000_0.5,n42,comparison_flip,32000,0.5,0.5004,2130,    if position < len(markup):,    if position <= len(markup):,31516
+n42_32000_0.9,n42,comparison_flip,32000,0.9,0.8987,3800,    if position < len(markup):,    if position <= len(markup):,31516
+n43_4000_0.1,n43,comparison_flip,4000,0.1,0.1084,50,    if c <= 0:,    if c < 0:,3940
+n43_4000_0.5,n43,comparison_flip,4000,0.5,0.4904,255,    if c <= 0:,    if c < 0:,3940
+n43_4000_0.9,n43,comparison_flip,4000,0.9,0.9104,482,    if c <= 0:,    if c < 0:,3940
+n43_16000_0.1,n43,comparison_flip,16000,0.1,0.0965,200,    if c <= 0:,    if c < 0:,15760
+n43_16000_0.5,n43,comparison_flip,16000,0.5,0.4975,1039,    if c <= 0:,    if c < 0:,15760
+n43_16000_0.9,n43,comparison_flip,16000,0.9,0.9063,1900,    if c <= 0:,    if c < 0:,15760
+n43_32000_0.1,n43,comparison_flip,32000,0.1,0.0999,433,    if c <= 0:,    if c < 0:,31517
+n43_32000_0.5,n43,comparison_flip,32000,0.5,0.5003,2111,    if c <= 0:,    if c < 0:,31517
+n43_32000_0.9,n43,comparison_flip,32000,0.9,0.9003,3866,    if c <= 0:,    if c < 0:,31517
+n44_4000_0.1,n44,comparison_flip,4000,0.1,0.0851,56,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,3936
+n44_4000_0.5,n44,comparison_flip,4000,0.5,0.5089,263,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,3936
+n44_4000_0.9,n44,comparison_flip,4000,0.9,0.9037,484,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,3936
+n44_16000_0.1,n44,comparison_flip,16000,0.1,0.1005,214,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,15747
+n44_16000_0.5,n44,comparison_flip,16000,0.5,0.5049,1074,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,15747
+n44_16000_0.9,n44,comparison_flip,16000,0.9,0.8978,1884,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,15747
+n44_32000_0.1,n44,comparison_flip,32000,0.1,0.1011,433,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,31507
+n44_32000_0.5,n44,comparison_flip,32000,0.5,0.5011,2106,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,31507
+n44_32000_0.9,n44,comparison_flip,32000,0.9,0.8988,3796,        if (_node is not None) and (0 <= _node < (1 << 48)):,        if (_node is not None) and (0 < _node < (1 << 48)):,31507
+n45_4000_0.1,n45,eq_flip,4000,0.1,0.0791,49,    if len(data) == 4:,    if len(data) != 4:,3934
+n45_4000_0.5,n45,eq_flip,4000,0.5,0.5097,247,    if len(data) == 4:,    if len(data) != 4:,3934
+n45_4000_0.9,n45,eq_flip,4000,0.9,0.8907,447,    if len(data) == 4:,    if len(data) != 4:,3934
+n45_16000_0.1,n45,eq_flip,16000,0.1,0.092,187,    if len(data) == 4:,    if len(data) != 4:,15752
+n45_16000_0.5,n45,eq_flip,16000,0.5,0.4985,1037,    if len(data) == 4:,    if len(data) != 4:,15752
+n45_16000_0.9,n45,eq_flip,16000,0.9,0.9054,1895,    if len(data) == 4:,    if len(data) != 4:,15752
+n45_32000_0.1,n45,eq_flip,32000,0.1,0.0995,401,    if len(data) == 4:,    if len(data) != 4:,31515
+n45_32000_0.5,n45,eq_flip,32000,0.5,0.4981,2104,    if len(data) == 4:,    if len(data) != 4:,31515
+n45_32000_0.9,n45,eq_flip,32000,0.9,0.8984,3852,    if len(data) == 4:,    if len(data) != 4:,31515
+n46_4000_0.1,n46,eq_flip,4000,0.1,0.1039,52,"    if key == ""extra"":","    if key != ""extra"":",3938
+n46_4000_0.5,n46,eq_flip,4000,0.5,0.5033,254,"    if key == ""extra"":","    if key != ""extra"":",3938
+n46_4000_0.9,n46,eq_flip,4000,0.9,0.8875,450,"    if key == ""extra"":","    if key != ""extra"":",3938
+n46_16000_0.1,n46,eq_flip,16000,0.1,0.0965,196,"    if key == ""extra"":","    if key != ""extra"":",15754
+n46_16000_0.5,n46,eq_flip,16000,0.5,0.4976,1045,"    if key == ""extra"":","    if key != ""extra"":",15754
+n46_16000_0.9,n46,eq_flip,16000,0.9,0.8981,1849,"    if key == ""extra"":","    if key != ""extra"":",15754
+n46_32000_0.1,n46,eq_flip,32000,0.1,0.1017,413,"    if key == ""extra"":","    if key != ""extra"":",31528
+n46_32000_0.5,n46,eq_flip,32000,0.5,0.5007,2078,"    if key == ""extra"":","    if key != ""extra"":",31528
+n46_32000_0.9,n46,eq_flip,32000,0.9,0.9,3761,"    if key == ""extra"":","    if key != ""extra"":",31528
+n47_4000_0.1,n47,eq_flip,4000,0.1,0.1004,68,    if len(data) == 8:,    if len(data) != 8:,3933
+n47_4000_0.5,n47,eq_flip,4000,0.5,0.4912,279,    if len(data) == 8:,    if len(data) != 8:,3933
+n47_4000_0.9,n47,eq_flip,4000,0.9,0.8935,497,    if len(data) == 8:,    if len(data) != 8:,3933
+n47_16000_0.1,n47,eq_flip,16000,0.1,0.0998,228,    if len(data) == 8:,    if len(data) != 8:,15750
+n47_16000_0.5,n47,eq_flip,16000,0.5,0.4968,1069,    if len(data) == 8:,    if len(data) != 8:,15750
+n47_16000_0.9,n47,eq_flip,16000,0.9,0.9011,1951,    if len(data) == 8:,    if len(data) != 8:,15750
+n47_32000_0.1,n47,eq_flip,32000,0.1,0.1037,464,    if len(data) == 8:,    if len(data) != 8:,31511
+n47_32000_0.5,n47,eq_flip,32000,0.5,0.5019,2161,    if len(data) == 8:,    if len(data) != 8:,31511
+n47_32000_0.9,n47,eq_flip,32000,0.9,0.9027,3821,    if len(data) == 8:,    if len(data) != 8:,31511
+n48_4000_0.1,n48,eq_flip,4000,0.1,0.107,51,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",3934
+n48_4000_0.5,n48,eq_flip,4000,0.5,0.5046,265,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",3934
+n48_4000_0.9,n48,eq_flip,4000,0.9,0.8968,471,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",3934
+n48_16000_0.1,n48,eq_flip,16000,0.1,0.0977,201,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",15743
+n48_16000_0.5,n48,eq_flip,16000,0.5,0.4929,1067,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",15743
+n48_16000_0.9,n48,eq_flip,16000,0.9,0.8946,1889,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",15743
+n48_32000_0.1,n48,eq_flip,32000,0.1,0.099,417,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",31503
+n48_32000_0.5,n48,eq_flip,32000,0.5,0.4963,2102,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",31503
+n48_32000_0.9,n48,eq_flip,32000,0.9,0.9,3811,"            if ((localName == ""*"" or node.localName == localName) and","            if ((localName != ""*"" or node.localName == localName) and",31503
+n49_4000_0.1,n49,eq_flip,4000,0.1,0.0785,38,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,3938
+n49_4000_0.5,n49,eq_flip,4000,0.5,0.5196,276,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,3938
+n49_4000_0.9,n49,eq_flip,4000,0.9,0.889,469,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,3938
+n49_16000_0.1,n49,eq_flip,16000,0.1,0.0975,207,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,15763
+n49_16000_0.5,n49,eq_flip,16000,0.5,0.5068,1038,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,15763
+n49_16000_0.9,n49,eq_flip,16000,0.9,0.8998,1900,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,15763
+n49_32000_0.1,n49,eq_flip,32000,0.1,0.0978,416,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,31528
+n49_32000_0.5,n49,eq_flip,32000,0.5,0.5003,2113,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,31528
+n49_32000_0.9,n49,eq_flip,32000,0.9,0.9024,3844,    if status == 303 and method != 'HEAD':,    if status != 303 and method != 'HEAD':,31528

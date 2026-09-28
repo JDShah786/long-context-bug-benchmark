@@ -4,3 +4,4 @@ data/bugged/
 __pycache__/
 *.pyc
 .venv/
+data/contexts.jsonl
