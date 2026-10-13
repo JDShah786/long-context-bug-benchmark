@@ -55,3 +55,21 @@ A running record of what each run showed. Newest entries go at the bottom. Numbe
   - The result was the same with and without Ollama's JSON mode, so JSON mode is not the cause.
 - **Reading:** Qwen 7B can sometimes find these bugs in isolation (3/10), but drops to 0 once surrounded by ~4k tokens of other real code. That's a **floor effect**: with 0% at every position, this pilot cannot show a position effect for this model. The drop from "alone" to 4k is itself worth reporting, but n = 10 for the "alone" condition is very small.
 - **Next:** run the Gemini and DeepSeek pilots before changing the design. A possible change is adding a shorter size (1k–2k) so weaker models aren't at the floor.
+
+## 2026-10-13 — DeepSeek-Coder-V2-Lite 16B pilot (`results/deepseek_pilot.jsonl`)
+
+- Same 90 papers as the Qwen pilot. Total answer time was 106 min (avg 14 s at 4k, 75 s at 16k, 123 s at 32k).
+  - The model doesn't fit fully in 12 GB of VRAM: 19 layers on the GPU, the rest on the CPU.
+- The run was interrupted once after 9 papers, when the Ollama app was closed. It resumed from paper 10 with no duplicates.
+- **Answered 90/90, found 1/90, fixed 0/90.** No errors, no `near_limit` flags.
+
+| Size | 10% | 50% | 90% |
+|---|---|---|---|
+| 4k | 1/10 | 0/10 | 0/10 |
+| 16k | 0/10 | 0/10 | 0/10 |
+| 32k | 0/10 | 0/10 | 0/10 |
+
+- The one hit (`n16_4000_0.1`) found `if ord(c) <= 128:` but the fix was wrong (`... or unicodedata.combining(c)`).
+- Wrong answers were not near-misses: 0/89 within 15 lines of the bug. 26/90 gave a "fix" identical to the line they quoted.
+- **Reading:** another **floor effect**. Like Qwen 7B, this model can't find these bugs once they're surrounded by 4k+ tokens of other code, so this pilot can't show a position effect for it either.
+- **Both local models are at the floor.** The position question depends on Gemini, the only model so far with room to drop (1/1 found and fixed on its first paper; not yet meaningful).

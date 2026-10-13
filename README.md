@@ -26,7 +26,7 @@ This is a controlled test of the "Lost in the Middle" effect ([Liu et al., 2023]
 | 3. Prompt + response parser (`src/prompt.py`) | Done, 18 tests |
 | 4. Scorer (`src/score.py`) | Done, 11 tests |
 | 5. Model clients + run loop (`src/models.py`, `src/run.py`) | Done; smoke-tested on all 3 models |
-| 6. Pilot (10 bugs) | Qwen done (0/90, floor); Gemini + DeepSeek next. See `FINDINGS.md` |
+| 6. Pilot (10 bugs) | Qwen 0/90, DeepSeek 1/90 (both floor); Gemini in progress. See `FINDINGS.md` |
 | 7. Full run (50 bugs × 9 cells × each model) | Not started |
 | 8. Charts + stats | Not started |
 | 9. Writeup | Not started |
