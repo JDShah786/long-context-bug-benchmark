@@ -73,3 +73,26 @@ A running record of what each run showed. Newest entries go at the bottom. Numbe
 - Wrong answers were not near-misses: 0/89 within 15 lines of the bug. 26/90 gave a "fix" identical to the line they quoted.
 - **Reading:** another **floor effect**. Like Qwen 7B, this model can't find these bugs once they're surrounded by 4k+ tokens of other code, so this pilot can't show a position effect for it either.
 - **Both local models are at the floor.** The position question depends on Gemini, the only model so far with room to drop (1/1 found and fixed on its first paper; not yet meaningful).
+
+## 2026-10-13 — Gemini pilot attempts (blocked by Google load)
+
+- **gemini-3.8-flash:** 1/90 papers answered (`n47_32000_0.5`, found and fixed) at 14:46. After that, every attempt hit "high demand" (HTTP 503) through all 5 retries (~7.5 min), and one attempt stopped with a "per day" quota error after very few calls.
+  - Which quota it was isn't known: the script didn't print it yet. It now does.
+  - Tiny test calls to 3.8 sometimes succeed in ~2 s. Long (32k) prompts have mostly failed today.
+- **gemini-3.6-flash:** also 503 most of the afternoon.
+- **gemini-2.5-flash:** 404, "no longer available to new users".
+- **gemini-3.5-flash:** a tiny call worked at ~16:20, but the pilot (16:24–16:32) got 503 on all 5 retries, so 0/90.
+- **Setup:** `run.py` now has `gemini35` (3.5 Flash) as a separate model entry with its own results file. 3.8 stays as `gemini`, so the two models' answers never mix.
+- Partial results (`results/gemini_pilot.jsonl`, 1 answer) are kept locally, not committed, until a pilot is complete.
+
+---
+
+## Next steps / open decisions (as of 2026-10-13)
+
+1. **Retry Gemini at a quieter time** (night or early morning). Try 3.8 first (the stronger model); if still blocked, use 3.5:
+   - `.venv\Scripts\python src/run.py gemini --pilot`
+   - `.venv\Scripts\python src/run.py gemini35 --pilot`
+   - If a daily-limit stop happens, the message now names the quota. Record it here.
+2. **Decide:** add a **"function alone" baseline** (the 50 bugged functions with no padding) for every model? It's cheap (minutes locally, 50 Gemini calls), and it turns the local models' floor into a measured drop ("found X% alone → 0% with 4k padding").
+3. **Decide:** skip the full 450-paper runs for Qwen and DeepSeek, since their pilots are already at the floor (0/90 and 1/90)? That saves ~1.5 h and ~6 h of laptop time for no new information. The skip would be stated in the writeup.
+4. After the Gemini pilot: check for ceiling/floor. If Gemini has room to move, run its full 450 papers (several days on the free tier), then do charts + stats (step 8) and the writeup (step 9).

@@ -25,6 +25,7 @@ MODELS = {
     "qwen": ("qwen2.5-coder:7b", "ollama"),
     "deepseek": ("deepseek-coder-v2:16b", "ollama"),
     "gemini": ("gemini-3.8-flash", "gemini"),
+    "gemini35": ("gemini-3.5-flash", "gemini"),  # fallback while 3.8 is overloaded
 }
 
 KEEP = ("id", "needle_id", "kind", "size", "depth", "actual_depth")
