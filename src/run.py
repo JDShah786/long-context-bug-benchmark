@@ -11,7 +11,7 @@ import pathlib
 import random
 import time
 
-from models import DailyLimitReached, gemini_generate, ollama_generate
+from models import DailyLimitReached, ModelUnavailable, gemini_generate, ollama_generate
 from prompt import make_prompt, parse_response
 from score import score
 
@@ -45,6 +45,10 @@ def run_all(rows, call, model_name, out_path, seed, num_ctx=NUM_CTX, log=print):
                 reply = call(make_prompt(row["text"]))
             except DailyLimitReached:
                 log(f"Daily limit reached after {n - 1} calls. Re-run tomorrow to resume.")
+                return
+            except ModelUnavailable as e:
+                log(f"Model still unavailable (HTTP {e.status}) after all retries, {n - 1} calls done. "
+                    f"Re-run later to resume.")
                 return
             answer = parse_response(reply["text"])
             result = {

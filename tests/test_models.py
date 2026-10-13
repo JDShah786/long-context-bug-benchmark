@@ -14,7 +14,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from models import DailyLimitReached, HttpError, gemini_generate, ollama_generate  # noqa: E402
+from models import DailyLimitReached, HttpError, ModelUnavailable, gemini_generate, ollama_generate  # noqa: E402
 
 
 class FakePost:
@@ -153,3 +153,16 @@ def test_ollama_repeat_loop_counts_as_no_answer():
 def test_ollama_other_errors_still_raise():
     with pytest.raises(HttpError):
         ollama_generate("m", "P", num_ctx=40960, post=FakePost(HttpError(500, "model not found")))
+
+
+def test_gemini_prints_each_wait():
+    messages = []
+    post = FakePost(HttpError(503, "busy"), gemini_reply({"text": ANSWER}))
+    call_gemini(post, log=messages.append)
+    assert len(messages) == 1
+    assert "503" in messages[0] and "retry 1/" in messages[0]
+
+
+def test_gemini_still_busy_after_retries_raises_model_unavailable():
+    with pytest.raises(ModelUnavailable):
+        call_gemini(FakePost(*[HttpError(503, "busy")] * 3), max_retries=2)

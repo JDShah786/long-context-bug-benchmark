@@ -15,7 +15,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from models import DailyLimitReached  # noqa: E402
+from models import DailyLimitReached, ModelUnavailable  # noqa: E402
 from run import pick_pilot, run_all  # noqa: E402
 
 
@@ -135,3 +135,17 @@ def test_model_error_is_saved_as_no_answer(tmp_path):
     assert len(saved) == 9
     assert not any(r["answered"] for r in saved)
     assert saved[0]["error"] == "token repeat limit reached"
+
+
+def test_model_unavailable_stops_cleanly_and_keeps_progress(tmp_path):
+    out, count, messages = tmp_path / "out.jsonl", {"n": 0}, []
+
+    def busy_later(prompt):
+        count["n"] += 1
+        if count["n"] > 2:
+            raise ModelUnavailable(503, "still busy")
+        return perfect(prompt)
+
+    run_all(make_rows(), busy_later, "fake", out, seed=0, log=messages.append)  # must not raise
+    assert len(read(out)) == 2
+    assert "re-run" in messages[-1].lower()

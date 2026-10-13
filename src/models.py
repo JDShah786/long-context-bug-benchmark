@@ -22,6 +22,10 @@ class HttpError(Exception):
         self.body = body
 
 
+class ModelUnavailable(HttpError):
+    """Still busy or rate-limited after every retry. Stop and resume later."""
+
+
 class DailyLimitReached(Exception):
     """The free tier's requests-per-day cap is used up. Stop and resume tomorrow."""
 
@@ -56,7 +60,7 @@ def ollama_generate(model: str, prompt: str, *, num_ctx: int, post=post_json) ->
 
 
 def gemini_generate(model: str, prompt: str, *, key: str, post=post_json, sleep=time.sleep,
-                    max_retries: int = 5) -> dict:
+                    max_retries: int = 5, log=print) -> dict:
     body = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": 0, "responseMimeType": "application/json"},
@@ -69,9 +73,13 @@ def gemini_generate(model: str, prompt: str, *, key: str, post=post_json, sleep=
         except HttpError as e:
             if e.status == 429 and "PerDay" in e.body:
                 raise DailyLimitReached(e.body[:300]) from None
-            if e.status not in RETRY_STATUSES or attempt == max_retries:
+            if e.status not in RETRY_STATUSES:
                 raise
-            sleep(_retry_delay(e.body) * (attempt + 1))
+            if attempt == max_retries:
+                raise ModelUnavailable(e.status, e.body) from None
+            wait = _retry_delay(e.body) * (attempt + 1)
+            log(f"  Google busy ({e.status}), waiting {wait:.0f}s, retry {attempt + 1}/{max_retries}...")
+            sleep(wait)
     parts = (reply.get("candidates") or [{}])[0].get("content", {}).get("parts", [])
     text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
     return {"text": text, "prompt_tokens": reply.get("usageMetadata", {}).get("promptTokenCount")}
