@@ -149,3 +149,13 @@ def test_model_unavailable_stops_cleanly_and_keeps_progress(tmp_path):
     run_all(make_rows(), busy_later, "fake", out, seed=0, log=messages.append)  # must not raise
     assert len(read(out)) == 2
     assert "re-run" in messages[-1].lower()
+
+
+def test_daily_limit_message_shows_which_limit(tmp_path):
+    messages = []
+
+    def capped(prompt):
+        raise DailyLimitReached("quotaId: GenerateContentInputTokensPerModelPerDay-FreeTier")
+
+    run_all(make_rows(1), capped, "fake", tmp_path / "out.jsonl", seed=0, log=messages.append)
+    assert "InputTokensPerModelPerDay" in messages[-1]

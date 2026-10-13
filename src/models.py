@@ -72,7 +72,7 @@ def gemini_generate(model: str, prompt: str, *, key: str, post=post_json, sleep=
             break
         except HttpError as e:
             if e.status == 429 and "PerDay" in e.body:
-                raise DailyLimitReached(e.body[:300]) from None
+                raise DailyLimitReached(", ".join(re.findall(r'"quotaId":\s*"([^"]+)"', e.body)) or e.body[:300]) from None
             if e.status not in RETRY_STATUSES:
                 raise
             if attempt == max_retries:

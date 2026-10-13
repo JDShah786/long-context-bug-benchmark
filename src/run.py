@@ -43,8 +43,8 @@ def run_all(rows, call, model_name, out_path, seed, num_ctx=NUM_CTX, log=print):
             start = time.time()
             try:
                 reply = call(make_prompt(row["text"]))
-            except DailyLimitReached:
-                log(f"Daily limit reached after {n - 1} calls. Re-run tomorrow to resume.")
+            except DailyLimitReached as e:
+                log(f"Daily limit reached ({e}) after {n - 1} calls. Re-run tomorrow to resume.")
                 return
             except ModelUnavailable as e:
                 log(f"Model still unavailable (HTTP {e.status}) after all retries, {n - 1} calls done. "
