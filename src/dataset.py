@@ -8,6 +8,7 @@ import json
 import pathlib
 import random
 import sys
+import textwrap
 from dataclasses import dataclass
 
 from bugs import Bug, apply_site, find_sites
@@ -19,7 +20,7 @@ SIZES = [4000, 16000, 32000]
 DEPTHS = [0.1, 0.5, 0.9]
 NEEDLE_TOKENS = (80, 300)
 MAX_FILLER_TOKENS = 300
-SKIP_DIRS = {"test", "tests", "idlelib", "turtledemo", "__phello__"}
+SKIP_DIRS = {"site-packages", "test", "tests", "idlelib", "turtledemo", "__phello__"}  # site-packages = third-party code
 
 DATA_DIR = pathlib.Path(__file__).resolve().parent.parent / "data"
 
@@ -31,14 +32,29 @@ class Needle:
     bug: Bug
 
 
+FUNCTION_NODES = (ast.FunctionDef, ast.AsyncFunctionDef)
+
+
 def extract_functions(source: str) -> list[str]:
+    """Top-level functions and methods of top-level classes, in file order, un-indented."""
     tree = ast.parse(source)
     lines = source.split("\n")
-    functions = []
+    nodes = []
     for node in tree.body:
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-            start = min([node.lineno] + [d.lineno for d in node.decorator_list])
-            functions.append("\n".join(lines[start - 1 : node.end_lineno]))
+        if isinstance(node, FUNCTION_NODES):
+            nodes.append(node)
+        elif isinstance(node, ast.ClassDef):
+            nodes += [n for n in node.body if isinstance(n, FUNCTION_NODES)]
+
+    functions = []
+    for node in nodes:
+        start = min([node.lineno] + [d.lineno for d in node.decorator_list])
+        text = textwrap.dedent("\n".join(lines[start - 1 : node.end_lineno]))
+        try:
+            ast.parse(text)  # a method may not stand alone cleanly (e.g. a string at column 0)
+        except SyntaxError:
+            continue
+        functions.append(text)
     return functions
 
 
@@ -107,12 +123,24 @@ def build_rows(needles, pool, sizes, depths, count_tokens, rng) -> list[dict]:
     return rows
 
 
+def split_pool(functions, count_tokens, needle_range=NEEDLE_TOKENS, max_filler=MAX_FILLER_TOKENS):
+    """Return (needle candidates, filler pool): each function once, first-seen order, filtered by size."""
+    unique = list(dict.fromkeys(functions))  # e.g. ~100 identical getregentry() copies in encodings/
+    sizes = {fn: count_tokens(fn) for fn in unique}
+    candidates = [fn for fn in unique if needle_range[0] <= sizes[fn] <= needle_range[1]]
+    pool = [fn for fn in unique if sizes[fn] <= max_filler]
+    return candidates, pool
+
+
+def stdlib_files(lib: pathlib.Path) -> list[pathlib.Path]:
+    # Only look at folders INSIDE lib, so where Python is installed doesn't matter.
+    return [p for p in sorted(lib.rglob("*.py"))
+            if not SKIP_DIRS & set(p.relative_to(lib).parts[:-1])]
+
+
 def _stdlib_functions() -> list[str]:
-    lib = pathlib.Path(ast.__file__).parent
     functions = []
-    for path in sorted(lib.rglob("*.py")):
-        if SKIP_DIRS & {p.name for p in path.parents}:
-            continue
+    for path in stdlib_files(pathlib.Path(ast.__file__).parent):
         try:
             functions += extract_functions(path.read_text(encoding="utf-8"))
         except (SyntaxError, UnicodeDecodeError):
@@ -128,10 +156,7 @@ if __name__ == "__main__":
     def count_tokens(text: str) -> int:
         return len(enc.encode(text, disallowed_special=()))
 
-    functions = _stdlib_functions()
-    sizes = {fn: count_tokens(fn) for fn in functions}
-    candidates = [fn for fn in functions if NEEDLE_TOKENS[0] <= sizes[fn] <= NEEDLE_TOKENS[1]]
-    pool = [fn for fn in functions if sizes[fn] <= MAX_FILLER_TOKENS]
+    candidates, pool = split_pool(_stdlib_functions(), count_tokens)
 
     rng = random.Random(SEED)
     needles = pick_needles(candidates, QUOTAS, rng)

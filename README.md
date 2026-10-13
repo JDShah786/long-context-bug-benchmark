@@ -25,7 +25,7 @@ This is a controlled test of the "Lost in the Middle" effect ([Liu et al., 2023]
 | 2. Needle + haystack builder (`src/haystack.py`, `src/dataset.py`) | Done, 44 tests; 450 contexts built (`data/manifest.csv`) |
 | 3. Prompt + response parser (`src/prompt.py`) | Done, 18 tests |
 | 4. Scorer (`src/score.py`) | Done, 11 tests |
-| 5. Model clients | Not started |
+| 5. Model clients + run loop (`src/models.py`, `src/run.py`) | Done; smoke-tested on all 3 models |
 | 6. Pilot (10 bugs) | Not started |
 | 7. Full run (50 bugs × 9 cells × each model) | Not started |
 | 8. Charts + stats | Not started |

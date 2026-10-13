@@ -16,7 +16,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from dataset import build_rows, extract_functions, fillers_for, pick_needles  # noqa: E402
+from dataset import build_rows, extract_functions, fillers_for, pick_needles, split_pool, stdlib_files  # noqa: E402
 from haystack import SEPARATOR  # noqa: E402
 
 
@@ -42,7 +42,7 @@ POOL = [f"def p{i}():\n    return " + " ".join(["x"] * 8) for i in range(200)]  
 
 # ---------- extract_functions ----------
 
-def test_extract_functions_top_level_only_with_decorators():
+def test_extract_functions_top_level_and_class_methods_with_decorators():
     source = (
         "import os\n\n"
         "@cache\n"
@@ -51,15 +51,29 @@ def test_extract_functions_top_level_only_with_decorators():
         "        pass\n"
         "    return x\n\n"
         "class K:\n"
+        "    X = 1\n\n"
+        "    @property\n"
         "    def method(self):\n"
+        "        def helper():\n"
+        "            pass\n"
+        "        return self.X\n\n"
+        "    async def run(self):\n"
         "        pass\n\n"
         "def b():\n"
         "    pass\n"
     )
     assert extract_functions(source) == [
         "@cache\ndef a(x):\n    def inner():\n        pass\n    return x",
+        "@property\ndef method(self):\n    def helper():\n        pass\n    return self.X",  # indent removed
+        "async def run(self):\n    pass",
         "def b():\n    pass",
     ]
+
+
+def test_method_that_cannot_stand_alone_is_skipped():
+    # The string's second line sits at column 0, so the method can't be un-indented cleanly.
+    source = 'class K:\n    def m(self):\n        x = """\nabc"""\n        return x\n\n    def ok(self):\n        pass\n'
+    assert extract_functions(source) == ["def ok(self):\n    pass"]
 
 
 def test_extract_functions_includes_async():
@@ -195,3 +209,25 @@ def test_fillers_are_shuffled_not_pool_order():
 
 def test_build_rows_repeatable_with_same_seed():
     assert rows_for(seed=3)[1] == rows_for(seed=3)[1]
+
+
+# ---------- stdlib_files ----------
+
+def test_stdlib_files_skip_third_party_and_tests(tmp_path):
+    lib = tmp_path / "tests" / "Lib"  # a skip-word ABOVE the library must not matter
+    for rel in ["a.py", "sub/b.py", "site-packages/yt/x.py", "test/t.py", "idlelib/i.py", "notes.txt"]:
+        (lib / rel).parent.mkdir(parents=True, exist_ok=True)
+        (lib / rel).write_text("x = 1\n")
+    assert [p.relative_to(lib).as_posix() for p in stdlib_files(lib)] == ["a.py", "sub/b.py"]
+
+
+# ---------- split_pool ----------
+
+def test_split_pool_drops_duplicates_and_filters_by_size():
+    small = "def s():\n    return 1"                          # 4 words
+    medium = "def m():\n    return " + " ".join(["x"] * 10)    # 13 words
+    big = "def b():\n    return " + " ".join(["y"] * 30)       # 33 words
+    functions = [medium, small, medium, big, small]           # duplicates on purpose
+    candidates, pool = split_pool(functions, words, needle_range=(10, 20), max_filler=15)
+    assert candidates == [medium]
+    assert pool == [medium, small]  # first-seen order, each once, big one too large
