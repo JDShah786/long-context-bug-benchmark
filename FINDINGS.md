@@ -1,0 +1,57 @@
+# Findings log
+
+A running record of what each run showed. Newest entries go at the bottom. Numbers only come from files in `results/` or from checks described here.
+
+---
+
+## 2026-10-12 — Smoke test (1 paper per model)
+
+- **Paper:** `n06_32000_0.5` from the *old* dataset (later rebuilt). One paper only, so treat this as "does it run", not a result.
+- **Time per 32k paper:**
+  - Qwen2.5-Coder 7B: 56 s
+  - DeepSeek-Coder-V2-Lite 16B: 133 s. It uses ~10.5 GB of the 12 GB VRAM; the rest runs on the CPU.
+  - Gemini 3.8 Flash: 267 s, mostly waiting out "server busy" (HTTP 503) errors.
+- **Token counts differ by model** for the same ~31.5k-token paper (cl100k): Qwen 31,926; Gemini 37,942; DeepSeek 39,307.
+  - DeepSeek came within ~1.6k of the 40,960 context limit.
+  - So `run.py` now flags any answer whose prompt was within 1,024 tokens of the limit (`near_limit`).
+- All 3 models missed the bug on that one paper.
+
+## 2026-10-12/13 — Dataset problems found and fixed
+
+1. **Third-party code in the "stdlib" dataset.**
+   - The loader searched all of `Lib/`, including `Lib/site-packages/`. Of 3,372 files there, 1,524 (45%) were `pip` and `yt_dlp`.
+   - This made the dataset depend on what was installed on the machine.
+   - Found because Gemini flagged `if callable(to_screen) is not None:`. That's a real bug in yt_dlp (`callable()` never returns `None`), sitting in the padding.
+   - **Fix:** skip `site-packages`, and only check folder names *inside* `Lib/`.
+2. **Too few off-by-one candidates after the fix.**
+   - Pure stdlib top-level functions of 80–300 tokens gave only 8 off-by-one candidates. The plan needed 15.
+   - **Decision:** also use methods of top-level classes, un-indented. That gives 27 candidates, so the planned 30/15/5 mix is kept.
+3. **Duplicate padding.**
+   - `encodings/` has ~100 near-identical `getregentry()` functions, so a paper could repeat the same block many times.
+   - **Fix:** each function appears at most once in the pool.
+
+**Rebuilt dataset (seed 42, Python 3.14.5):** 450 papers from 50 needles (30 comparison flip / 15 off-by-one / 5 eq flip).
+- Sizes: 3,916–3,940 / 15,690–15,744 / 31,401–31,465 tokens.
+- Every bug is within 0.035 of its target depth.
+- The bugged line is unique in every paper, and no paper has a duplicate function.
+
+**Run note:** a first Qwen pilot accidentally ran on the old dataset while the rebuild was in progress. Those 13 answers were discarded.
+
+## 2026-10-13 — Qwen2.5-Coder 7B pilot (`results/qwen_pilot.jsonl`)
+
+- 10 needles (6 / 3 / 1 by kind) × 3 sizes × 3 depths = **90 papers**. Run time was 17 min (avg 4.5 s at 4k, 9.6 s at 16k, 19.9 s at 32k).
+- **Answered 90/90, found 0/90, fixed 0/90.** No errors, no `near_limit` flags.
+
+| Size | 10% | 50% | 90% |
+|---|---|---|---|
+| 4k | 0/10 | 0/10 | 0/10 |
+| 16k | 0/10 | 0/10 | 0/10 |
+| 32k | 0/10 | 0/10 | 0/10 |
+
+- Wrong answers were not near-misses: 0/90 pointed within 15 lines of the bug.
+- 38/90 gave a "fix" identical to the line they quoted.
+- **Diagnostic** (ad hoc, n = 10: the 10 pilot needles' bugged functions shown *alone*, ~200 tokens, same prompt, temperature 0):
+  - Found 3/10, fixed 2/10.
+  - The result was the same with and without Ollama's JSON mode, so JSON mode is not the cause.
+- **Reading:** Qwen 7B can sometimes find these bugs in isolation (3/10), but drops to 0 once surrounded by ~4k tokens of other real code. That's a **floor effect**: with 0% at every position, this pilot cannot show a position effect for this model. The drop from "alone" to 4k is itself worth reporting, but n = 10 for the "alone" condition is very small.
+- **Next:** run the Gemini and DeepSeek pilots before changing the design. A possible change is adding a shorter size (1k–2k) so weaker models aren't at the floor.
