@@ -137,3 +137,6 @@ Checks that the pipeline does what we think, not just what the tests say.
 2. ~~Decide: add a "function alone" baseline~~ **Done 2026-10-14** (see above). Originally: (the 50 bugged functions with no padding) for every model? It's cheap (minutes locally, 50 Gemini calls), and it turns the local models' floor into a measured drop ("found X% alone → 0% with 4k padding").
 3. **Decide:** skip the full 450-paper runs for Qwen and DeepSeek, since their pilots are already at the floor (0/90 and 1/90)? That saves ~1.5 h and ~6 h of laptop time for no new information. The skip would be stated in the writeup.
 4. After the Gemini pilot: check for ceiling/floor. If Gemini has room to move, run its full 450 papers (several days on the free tier), then do charts + stats (step 8) and the writeup (step 9).
+5. **Saved for next session:**
+   - Verification check 3: break the code on purpose (e.g. swap an entry in `FLIPS` in `src/bugs.py`), run the tests, confirm they fail, then undo with `git checkout src/bugs.py`.
+   - A detailed quiz on every part of the project, to prepare for the meeting with Professor Yin.
