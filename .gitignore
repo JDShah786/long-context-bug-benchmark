@@ -8,3 +8,5 @@ data/contexts.jsonl
 .env
 results/*.log
 results/*.err
+verify/papers/
+verify/hand_grades.csv

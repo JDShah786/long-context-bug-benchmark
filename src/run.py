@@ -6,6 +6,7 @@ Run:
 Results go to results/<model>.jsonl (or <model>_pilot.jsonl). Re-running resumes.
 """
 import argparse
+import ast
 import json
 import pathlib
 import random
@@ -14,6 +15,7 @@ import time
 from models import DailyLimitReached, ModelUnavailable, gemini_generate, ollama_generate
 from prompt import make_prompt, parse_response
 from score import score
+from haystack import SEPARATOR
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PILOT_MIX = {"comparison_flip": 6, "off_by_one": 3, "eq_flip": 1}
@@ -79,6 +81,33 @@ def pick_pilot(rows, seed, mix=PILOT_MIX):
     return [r for r in rows if r["needle_id"] in chosen]
 
 
+def alone_rows(rows):
+    """One row per needle whose text is just the bugged function, cut back out of a built context."""
+    alone = {}
+    for row in rows:
+        if row["needle_id"] not in alone:
+            alone[row["needle_id"]] = {**row, "id": f"{row['needle_id']}_alone", "size": "alone",
+                                       "depth": None, "actual_depth": None, "text": _needle_of(row)}
+    return list(alone.values())
+
+
+def _needle_of(row):
+    start = 1  # line number where the current block starts
+    for block in row["text"].split(SEPARATOR):
+        n_lines = block.count("\n") + 1
+        if start <= row["bug_line"] < start + n_lines:
+            lines = block.split("\n")
+            if lines[row["bug_line"] - start] != row["bugged_line"]:
+                break
+            try:
+                ast.parse(block)
+            except SyntaxError:
+                break  # cut in the wrong place
+            return block
+        start += n_lines + SEPARATOR.count("\n") - 1  # the separator adds blank lines between blocks
+    raise ValueError(f"could not cut the needle out of {row['id']}")
+
+
 def _make_call(name):
     model, backend = MODELS[name]
     if backend == "ollama":
@@ -97,15 +126,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model", choices=MODELS)
     parser.add_argument("--pilot", action="store_true")
+    parser.add_argument("--alone", action="store_true", help="each bugged function with no padding (50 calls)")
     parser.add_argument("--limit", type=int, help="ask at most this many contexts")
     args = parser.parse_args()
 
     rows = [json.loads(line) for line in open(ROOT / "data" / "contexts.jsonl", encoding="utf-8")]
     if args.pilot:
         rows = pick_pilot(rows, seed=0)
+    if args.alone:
+        rows = alone_rows(rows)
     if args.limit:
         rows = rows[: args.limit]
     model, call = _make_call(args.model)
-    out = ROOT / "results" / f"{args.model}{'_pilot' if args.pilot else ''}.jsonl"
+    suffix = ("_pilot" if args.pilot else "") + ("_alone" if args.alone else "")
+    out = ROOT / "results" / f"{args.model}{suffix}.jsonl"
     out.parent.mkdir(exist_ok=True)
     run_all(rows, call, model, out, seed=1)

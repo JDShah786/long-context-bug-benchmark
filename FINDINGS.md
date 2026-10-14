@@ -94,6 +94,38 @@ A running record of what each run showed. Newest entries go at the bottom. Numbe
   - **A:** a "patient" runner that waits ~15 min between busy periods and keeps going for hours (e.g. overnight).
   - **B:** a backup free provider with a strong model. Its current free limits, especially the max prompt size (needs ≥ 32k), must be checked first; Groq's free tier was already ruled out (8k tokens/min).
 
+## 2026-10-14 — "Function alone" baseline (`results/*_alone.jsonl`)
+
+All 50 bugged functions, shown with no surrounding code (93–299 tokens each), using the same prompt, settings and scoring as the main runs. Each function is cut back out of a built context (`alone_rows` in `run.py`).
+
+| Model | Found alone | 95% CI | Fixed alone | Found with padding (pilot, 4k–32k) |
+|---|---|---|---|---|
+| Qwen2.5-Coder 7B | 11/50 (22%) | 13–35% | 9/50 | 0/90 |
+| DeepSeek-Coder-V2-Lite | 8/50 (16%) | 8–29% | 3/50 | 1/90 |
+
+- **By kind (found alone):**
+  - Qwen: comparison 6/30, off-by-one 4/15, eq 1/5.
+  - DeepSeek: comparison 7/30, off-by-one 1/15, eq 0/5.
+- **On the 10 pilot bugs specifically:** Qwen found 3/10 alone (vs 0/90 padded); DeepSeek found 0/10 alone. So for DeepSeek the pilot bugs were hard even without padding, and the pilot can't show a drop on those same bugs. Its overall 16% alone vs ~1% padded is a comparison across different bug sets.
+- No errors. Average 3.6 s (Qwen) and 4.7 s (DeepSeek) per function.
+- **Reading:** both models can find some of these bugs in isolation (16–22%) and almost none once 4k+ tokens of other code surround them. For Qwen the drop is on the same bugs (3/10 → 0/90 over those bugs' 90 contexts). The confidence intervals are wide, so the exact baseline rates are rough.
+
+## 2026-10-14 — Verification by hand (`src/verify.py`)
+
+Checks that the pipeline does what we think, not just what the tests say.
+
+1. **Papers match real Python (5 random papers, seed 7).** For each one:
+   - the recorded bug line is at the recorded line number;
+   - its position matches the target depth;
+   - after undoing the one injected change, the whole function matches the real Python 3.14.5 source file exactly, with exactly one line different. 5/5 passed.
+   - Example: `n18_16000_0.1` changes `pdb.py` line 2602 from `elif i < usage_end:` to `elif i <= usage_end:`.
+2. **Grading checked by hand (10 random answers, seed 7, half graded "found" by the code).** Each answer's quoted line and fix were read against the real bug and the correct line.
+   - **Found:** the code's grade was right on 10/10. Every "not found" quoted a clearly different line (e.g. `def __init__(self, lock=None):` for a bug in `elif n <= length:`).
+   - **Fixed:** the code's grade was right on 9/10. The exception is `n29_alone` (DeepSeek, function alone):
+     - the correct line is `if pos < 0 or pos > self.chunksize:`;
+     - the model's fix `if not (0 <= pos <= self.chunksize):` means the same thing but is written differently, so strict scoring marked it wrong.
+   - **Takeaway:** "found", the measure the position question depends on, is reliable. "Fixed" undercounts correct fixes written in a different form, so fix rates are a lower bound. An automatic same-meaning check for fixes was considered and left for later.
+
 ---
 
 ## Next steps / open decisions (as of 2026-10-14)
@@ -102,6 +134,6 @@ A running record of what each run showed. Newest entries go at the bottom. Numbe
    - `.venv\Scripts\python src/run.py gemini --pilot`
    - `.venv\Scripts\python src/run.py gemini35 --pilot`
    - If a daily-limit stop happens, the message now names the quota. Record it here.
-2. **Decide:** add a **"function alone" baseline** (the 50 bugged functions with no padding) for every model? It's cheap (minutes locally, 50 Gemini calls), and it turns the local models' floor into a measured drop ("found X% alone → 0% with 4k padding").
+2. ~~Decide: add a "function alone" baseline~~ **Done 2026-10-14** (see above). Originally: (the 50 bugged functions with no padding) for every model? It's cheap (minutes locally, 50 Gemini calls), and it turns the local models' floor into a measured drop ("found X% alone → 0% with 4k padding").
 3. **Decide:** skip the full 450-paper runs for Qwen and DeepSeek, since their pilots are already at the floor (0/90 and 1/90)? That saves ~1.5 h and ~6 h of laptop time for no new information. The skip would be stated in the writeup.
 4. After the Gemini pilot: check for ceiling/floor. If Gemini has room to move, run its full 450 papers (several days on the free tier), then do charts + stats (step 8) and the writeup (step 9).
