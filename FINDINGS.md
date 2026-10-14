@@ -85,11 +85,20 @@ A running record of what each run showed. Newest entries go at the bottom. Numbe
 - **Setup:** `run.py` now has `gemini35` (3.5 Flash) as a separate model entry with its own results file. 3.8 stays as `gemini`, so the two models' answers never mix.
 - Partial results (`results/gemini_pilot.jsonl`, 1 answer) are kept locally, not committed, until a pilot is complete.
 
+## 2026-10-14 — Gemini still blocked
+
+- A tiny "hi" call returned **HTTP 503 (UNAVAILABLE)** on both `gemini-3.8-flash` and `gemini-3.5-flash`. This is no longer only long prompts: the free tier was overloaded even for 2-token requests.
+- Gemini pilot progress is unchanged: 3.8 has 1/90 (local only), 3.5 has 0/90.
+- Over two days, Google free-tier load is now the main risk to finishing the study.
+- **Options noted:**
+  - **A:** a "patient" runner that waits ~15 min between busy periods and keeps going for hours (e.g. overnight).
+  - **B:** a backup free provider with a strong model. Its current free limits, especially the max prompt size (needs ≥ 32k), must be checked first; Groq's free tier was already ruled out (8k tokens/min).
+
 ---
 
-## Next steps / open decisions (as of 2026-10-13)
+## Next steps / open decisions (as of 2026-10-14)
 
-1. **Retry Gemini at a quieter time** (night or early morning). Try 3.8 first (the stronger model); if still blocked, use 3.5:
+1. **Get Gemini answers:** choose option A (patient runner), B (backup provider), or both. Until then, retry at quiet times (night or early morning). Try 3.8 first (the stronger model); if still blocked, use 3.5:
    - `.venv\Scripts\python src/run.py gemini --pilot`
    - `.venv\Scripts\python src/run.py gemini35 --pilot`
    - If a daily-limit stop happens, the message now names the quota. Record it here.
